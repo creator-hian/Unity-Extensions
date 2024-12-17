@@ -1,6 +1,6 @@
-# Unity-Package-Base
+# Unity-Extensions
 
-Unity Package 작성을 위한 Base Repository입니다.
+Unity 엔진의 기본 기능을 확장하기 위한 다양한 유틸리티와 도구를 제공합니다. 개발자들이 더 효율적으로 작업할 수 있도록 설계되었으며, 커스터마이징 가능한 기능과 쉽게 통합할 수 있는 패키지로 구성되어 있습니다.
 
 ## 요구사항
 
