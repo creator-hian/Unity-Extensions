@@ -10,6 +10,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 지정된 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector4를 반환하며, 원래의 Vector4는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="axis">값을 설정할 축의 인덱스 (0: x, 1: y, 2: z, 3: w).</param>
@@ -38,6 +39,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 x 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector4를 반환하며, 원래의 Vector4는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="x">설정할 x 값.</param>
@@ -49,6 +51,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 y 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector4를 반환하며, 원래의 Vector4는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="y">설정할 y 값.</param>
@@ -60,6 +63,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 z 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector4를 반환하며, 원래의 Vector4는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="z">설정할 z 값.</param>
@@ -71,6 +75,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 w 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector4를 반환하며, 원래의 Vector4는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="w">설정할 w 값.</param>
@@ -199,7 +204,7 @@ namespace Hian.Extensions
         /// 벡터의 z, w 축에 값을 설정합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
-        /// <param name="z">설정�� z 값.</param>
+        /// <param name="z">설정할 z 값.</param>
         /// <param name="w">설정할 w 값.</param>
         /// <returns>z, w 값이 변경된 새 Vector4.</returns>
         public static Vector4 WithZW(this Vector4 vector, float z, float w)
@@ -604,7 +609,7 @@ namespace Hian.Extensions
         /// x, w, y 순서로 바꾼 새 Vector3를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
-        /// <returns>x, w, y 순서로 바�� 새 Vector3.</returns>
+        /// <returns>x, w, y 순서로 바꾼 새 Vector3.</returns>
         public static Vector3 GetXWY(this Vector4 vector) => Get(vector, 0, 3, 1);
 
         /// <summary>

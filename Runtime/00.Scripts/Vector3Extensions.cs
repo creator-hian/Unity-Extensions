@@ -11,6 +11,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 지정된 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector3를 반환하며, 원래의 Vector3는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="axis">값을 설정할 축의 인덱스 (0: x, 1: y, 2: z).</param>
@@ -37,6 +38,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 x 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector3를 반환하며, 원래의 Vector3는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="x">설정할 x 값.</param>
@@ -48,6 +50,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 y 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector3를 반환하며, 원래의 Vector3는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="y">설정할 y 값.</param>
@@ -59,6 +62,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 z 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector3를 반환하며, 원래의 Vector3는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="z">설정할 z 값.</param>
