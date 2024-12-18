@@ -9,6 +9,18 @@ Unity 엔진의 기본 기능을 확장하기 위한 다양한 유틸리티와 �
 
 ## 개요
 
+이 패키지는 Unity의 기본 기능을 확장하는 다양한 클래스와 메서드를 제공합니다. 주요 기능은 다음과 같습니다:
+
+- **Vector2Extensions**: `Vector2` 구조체에 대한 확장 메서드를 제공합니다. 좌표 변환, 회전, 거리 계산, 보간 등 다양한 기능을 제공합니다.
+- **Vector3Extensions**: `Vector3` 구조체에 대한 확장 메서드를 제공합니다. 좌표 변환, 회전, 거리 계산, 사영, 반사, 보간 등 다양한 기능을 제공합니다.
+- **Vector4Extensions**: `Vector4` 구조체에 대한 확장 메서드를 제공합니다. 좌표 변환, 거리 계산, 보간 등 다양한 기능을 제공합니다.
+- **Vector2IntExtensions**: `Vector2Int` 구조체에 대한 확장 메서드를 제공합니다. 좌표 변환, 거리 계산 등 다양한 기능을 제공합니다.
+- **Vector3IntExtensions**: `Vector3Int` 구조체에 대한 확장 메서드를 제공합니다. 좌표 변환, 거리 계산 등 다양한 기능을 제공합니다.
+- **ColorExtensions**: `Color` 구조체에 대한 확장 메서드를 제공합니다. 색상 변환, 보간 등 다양한 기능을 제공합니다.
+- **Color32Extensions**: `Color32` 구조체에 대한 확장 메서드를 제공합니다. 색상 변환, 보간 등 다양한 기능을 제공합니다.
+- **FloatExtensions**: `float` 타입에 대한 확장 메서드를 제공합니다. 근사 비교, 범위 매핑, 부호 변경 등 다양한 기능을 제공합니다.
+- **DoubleExtensions**: `double` 타입에 대한 확장 메서드를 제공합니다. 근사 비교, 범위 매핑, 부호 변경 등 `FloatExtensions`와 유사한 기능을 제공합니다.
+
 ## 주요 기능
 
 ## 설치 방법
@@ -29,7 +41,7 @@ Unity 엔진의 기본 기능을 확장하기 위한 다양한 유틸리티와 �
 3. 다음 URL을 입력합니다:
 
 ```text
-https://github.com/creator-hian/Unity-Common.git
+https://github.com/creator-hian/Unity-Extensions.git
 ```
 
 4. 'Add' 버튼을 클릭합니다.
@@ -43,7 +55,7 @@ https://github.com/creator-hian/Unity-Common.git
 ```json
 {
   "dependencies": {
-    // "com.creator-hian.unity.common": "https://github.com/creator-hian/Unity-Common.git",
+    "com.creator-hian.unity.extensions": "https://github.com/creator-hian/Unity-Extensions.git",
     ...
   }
 }
@@ -56,7 +68,7 @@ https://github.com/creator-hian/Unity-Common.git
 ```json
 {
   "dependencies": {
-    // "com.creator-hian.unity.common": "https://github.com/creator-hian/Unity-Common.git#0.0.1",
+    "com.creator-hian.unity.extensions": "https://github.com/creator-hian/Unity-Extensions.git#0.0.1",
     ...
   }
 }
@@ -69,7 +81,6 @@ https://github.com/creator-hian/Unity-Common.git
 ## 문서
 
 각 기능에 대한 자세한 설명은 해당 기능의 README를 참조하세요:
-
 
 ## 원작성자
 

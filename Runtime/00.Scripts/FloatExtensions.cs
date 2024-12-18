@@ -19,13 +19,14 @@ namespace Hian.Extensions
         }
 
         /// <summary>
-        /// 두 부동 소수점 숫자가 근사적으로 같은지 확인합니다.
+        /// 두 부동 소수점 숫자가 근사치 수준으로 같은지 여부를 확인합니다.
         /// </summary>
-        /// <param name="value">첫 번째 값.</param>
-        /// <param name="other">두 번째 값.</param>
-        /// <returns>두 값이 근사적으로 같으면 true, 그렇지 않으면 false.</returns>
-        public static bool Approx(this float value, float other) =>
-            Mathf.Approximately(value, other);
+        /// <param name="a">첫 번째 부동 소수점 숫자.</param>
+        /// <param name="b">두 번째 부동 소수점 숫자.</param>
+        /// <returns>두 숫자가 거의 같으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.</returns>
+        public static bool Approx(this float a, float b) =>
+            Mathf.Abs(b - a)
+            < Mathf.Max(0.0000001f * Mathf.Max(Mathf.Abs(a), Mathf.Abs(b)), Mathf.Epsilon * 8);
 
         /// <summary>
         /// 값의 부호(+ 또는 -)를 임의로 변경합니다.

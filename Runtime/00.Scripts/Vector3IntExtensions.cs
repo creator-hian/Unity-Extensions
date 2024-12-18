@@ -8,6 +8,7 @@ namespace Hian.Extensions
     {
         /// <summary>
         /// 벡터의 지정된 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector3Int를 반환하며, 원래의 Vector3Int는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="axis">값을 설정할 축의 인덱스 (0: x, 1: y, 2: z).</param>
@@ -34,6 +35,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 x 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector3Int를 반환하며, 원래의 Vector3Int는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="x">설정할 x 값.</param>
@@ -45,6 +47,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 y 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector3Int를 반환하며, 원래의 Vector3Int는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="y">설정할 y 값.</param>
@@ -56,6 +59,7 @@ namespace Hian.Extensions
 
         /// <summary>
         /// 벡터의 z 축에 값을 설정합니다.
+        /// 이 메서드는 새로운 Vector3Int를 반환하며, 원래의 Vector3Int는 변경되지 않습니다 (불변성).
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <param name="z">설정할 z 값.</param>
@@ -309,7 +313,7 @@ namespace Hian.Extensions
         /// 벡터에서 가장 큰 성분의 인덱스와 값을 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
-        /// <returns>가장 큰 성분의 인덱스와 값��� 포함하는 튜플.</returns>
+        /// <returns>가장 큰 성분의 인덱스와 값을 포함하는 튜플.</returns>
         public static (int index, int value) MaxComponent(this Vector3Int vector)
         {
             var index = 0;
@@ -377,7 +381,7 @@ namespace Hian.Extensions
             new(vector.x / other.x, vector.y / other.y, vector.z / other.z);
 
         /// <summary>
-        /// 벡터의 모든 성분이 같은지 확인합니��.
+        /// 벡터의 모든 성분이 같은지 확인합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>모든 성분이 같으면 true, 그렇지 않으면 false.</returns>

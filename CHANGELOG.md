@@ -21,3 +21,15 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 ### Fixed
+
+## [0.0.1] - 2024-02-16
+
+### Added
+
+- `Vector2`, `Vector3`, `Vector4`, `Vector2Int`, `Vector3Int`  구조체에 대한 확장 메서드 추가
+- `Color`, `Color32` 구조체에 대한 확장 메서드 추가
+- `float`, `double` 타입에 대한 확장 메서드 추가
+
+### Changed
+
+### Fixed
