@@ -1,0 +1,31 @@
+name: Unity Package Export
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Unity
+      uses: game-ci/unity-setup@v2
+      with:
+        unityVersion: '2023.1.0f1'
+
+    - name: Export Unity Package
+      run: |
+        mkdir -p output
+        /opt/unity/Editor/Unity \
+          -batchmode -nographics \
+          -projectPath ${{ github.workspace }} \
+          -exportPackage Assets/MyPackage output/MyPackage.unitypackage
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: MyPackage
+        path: output/MyPackage.unitypackage
