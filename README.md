@@ -37,6 +37,10 @@ Unity 엔진의 기본 기능을 확장하기 위한 다양한 유틸리티와 �
 - **RenderTextureExtensions**: `RenderTexture` 클래스에 대한 확장 메서드를 제공합니다. 텍스처 생성, 텍스처 쓰기, 스프라이트 생성 기능을 제공합니다.
 - **SceneExtensions**: `Scene` 클래스에 대한 확장 메서드를 제공합니다. Scene에서 컴포넌트를 가진 게임 오브젝트를 찾고, Scene에서 컴포넌트를 가진 게임 오브젝트들을 찾는 기능을 제공합니다.
 - **TransformExtensions**: `Transform` 클래스에 대한 확장 메서드를 제공합니다. 모든 자식 가져오기, 임의의 자식 가져오기, 자식 추가, 모든 자식 제거, 첫 번째 자식 제거, 마지막 자식 제거, Transform을 RectTransform 타입으로 캐스팅 기능을 제공합니다.
+- **LayerMaskExtensions**: `LayerMask` 클래스에 대한 확장 메서드를 제공합니다. 레이어 마스크에서 레이어 제거, 레이어 마스크에서 레이어 제거 기능을 제공합니다.
+- **DateTimeExtensions**: `DateTime` 클래스에 대한 확장 메서드를 제공합니다. 날짜 비교, 날짜 범위 매핑, 날짜 범위 검사 기능을 제공합니다.
+- **IEnumeratorExtensions**: `IEnumerator` 인터페이스에 대한 확장 메서드를 제공합니다. `IEnumerator` 를 `IEnumerable` 로 변환하는 기능을 제공합니다.
+- **IEnumerableExtensions**: `IEnumerable` 인터페이스에 대한 확장 메서드를 제공합니다. 시퀀스의 각 요소에 대해 지정된 동작을 수행하는 기능을 제공합니다.
 
 ## 주요 기능
 
@@ -60,6 +64,10 @@ Unity 엔진의 기본 기능을 확장하기 위한 다양한 유틸리티와 �
 - `RenderTexture`에 대한 확장 메서드 (텍스처 생성, 텍스처 쓰기, 스프라이트 생성)
 - `Scene`에 대한 확장 메서드 (Scene에서 컴포넌트를 가진 게임 오브젝트를 찾고, Scene에서 컴포넌트를 가진 게임 오브젝트들을 찾는 기능을 제공합니다.)
 - `Transform`에 대한 확장 메서드 (모든 자식 가져오기, 임의의 자식 가져오기, 자식 추가, 모든 자식 제거, 첫 번째 자식 제거, 마지막 자식 제거, Transform을 RectTransform 타입으로 캐스팅)
+- `LayerMask`에 대한 확장 메서드 (레이어 마스크에서 레이어 제거, 레이어 마스크에서 레이어 제거)
+- `DateTime`에 대한 확장 메서드 (날짜 비교, 날짜 범위 매핑, 날짜 범위 검사)
+- `IEnumerator`에 대한 확장 메서드 (`IEnumerator` 를 `IEnumerable` 로 변환)
+- `IEnumerable`에 대한 확장 메서드 (시퀀스의 각 요소에 대해 지정된 동작을 수행)
 
 ## 설치 방법
 
