@@ -41,33 +41,8 @@ Unity 엔진의 기본 기능을 확장하기 위한 다양한 유틸리티와 �
 - **DateTimeExtensions**: `DateTime` 클래스에 대한 확장 메서드를 제공합니다. 날짜 비교, 날짜 범위 매핑, 날짜 범위 검사 기능을 제공합니다.
 - **IEnumeratorExtensions**: `IEnumerator` 인터페이스에 대한 확장 메서드를 제공합니다. `IEnumerator` 를 `IEnumerable` 로 변환하는 기능을 제공합니다.
 - **IEnumerableExtensions**: `IEnumerable` 인터페이스에 대한 확장 메서드를 제공합니다. 시퀀스의 각 요소에 대해 지정된 동작을 수행하는 기능을 제공합니다.
-
-## 주요 기능
-
-- `Vector2`, `Vector3`, `Vector4`, `Vector2Int`, `Vector3Int`에 대한 다양한 확장 메서드
-- `Color`, `Color32`에 대한 확장 메서드 (색상 채널 설정, 보간 등)
-- `float`, `double`에 대한 확장 메서드 (근사 비교, 범위 매핑 등)
-- `Component`에 대한 확장 메서드 (컴포넌트 가져오기/추가, 자식/부모에서 검색)
-- `Camera`에 대한 확장 메서드 (배경색 설정, 렌즈 쉬프트, 픽셀 사각형 설정 등)
-- `CanvasScaler`에 대한 확장 메서드 (`ScaleWithScreenSize` 모드에서 스케일 팩터 가져오기)
-- `GameObject`에 대한 확장 메서드 (컴포넌트 가져오기/추가, 자식/부모에서 검색, 레이어 설정 등)
-- `Graphic`에 대한 확장 메서드 (색상 채널 값 설정)
-- `IComparable`에 대한 확장 메서드 (값이 지정된 간격 내에 있는지 확인)
-- `IEnumerable`에 대한 확장 메서드 (임의의 요소 가져오기, 임의의 요소들 가져오기)
-- `IEquatable`에 대한 확장 메서드 (값이 지정된 배열의 모든 요소와 같은지 확인, 지정된 배열의 요소 중 하나 이상과 같은지 확인)
-- `IList`에 대한 확장 메서드 (인덱스에 있는 요소를 꺼내고, 인덱스들에 있는 요소들을 꺼내는 기능을 제공합니다.)
-- `Object`에 대한 확장 메서드 (객체가 지정된 배열의 모든 요소와 같은지 확인, 지정된 배열의 요소 중 하나 이상과 같은지 확인)
-- `Quaternion`에 대한 확장 메서드 (축에 값 설정)
-- `Ray`에 대한 확장 메서드 (반전된 Ray 생성, 임의로 Ray 방향을 편향시키기)
-- `Rect`에 대한 확장 메서드 (중심, 위치, 높이, 너비 설정)
-- `RectTransform`에 대한 확장 메서드 (크기 델타 x, y 설정, 앵커 최소 x, y 설정, 앵커 최대 x, y 설정, 앵커 중심 x, y 설정, 앵커 피봇 x, y 설정, 앵커 피봇 최소 x, y 설정, 앵커 피봇 최대 x, y 설정, 앵커 피봇 최소 x, y 설정, 앵커 피봇 최대 x, y 설정)
-- `RenderTexture`에 대한 확장 메서드 (텍스처 생성, 텍스처 쓰기, 스프라이트 생성)
-- `Scene`에 대한 확장 메서드 (Scene에서 컴포넌트를 가진 게임 오브젝트를 찾고, Scene에서 컴포넌트를 가진 게임 오브젝트들을 찾는 기능을 제공합니다.)
-- `Transform`에 대한 확장 메서드 (모든 자식 가져오기, 임의의 자식 가져오기, 자식 추가, 모든 자식 제거, 첫 번째 자식 제거, 마지막 자식 제거, Transform을 RectTransform 타입으로 캐스팅)
-- `LayerMask`에 대한 확장 메서드 (레이어 마스크에서 레이어 제거, 레이어 마스크에서 레이어 제거)
-- `DateTime`에 대한 확장 메서드 (날짜 비교, 날짜 범위 매핑, 날짜 범위 검사)
-- `IEnumerator`에 대한 확장 메서드 (`IEnumerator` 를 `IEnumerable` 로 변환)
-- `IEnumerable`에 대한 확장 메서드 (시퀀스의 각 요소에 대해 지정된 동작을 수행)
+- **AsyncOperationExtensions**: `AsyncOperation` 클래스에 대한 확장 메서드를 제공합니다. `AsyncOperation`을 `Task`로 변환하는 기능을 제공합니다.
+- **TaskExtensions**: `Task` 클래스에 대한 확장 메서드를 제공합니다. `Task`에 취소 토큰을 적용하는 기능을 제공합니다.
 
 ## 설치 방법
 

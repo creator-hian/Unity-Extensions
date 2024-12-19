@@ -12,6 +12,13 @@ All notable changes to this project will be documented in this file.
   - **Patch**: 하위 호환성 있는 버그 수정
 - **최신 버전이 상단에, 이전 버전이 하단에 기록됩니다.**
 
+## [0.3.0] - 2024-12-19
+
+### Added
+
+- `AsyncOperationExtensions`: `AsyncOperation` 클래스에 대한 확장 메서드 추가 (`AsyncOperation`을 `Task`로 변환)
+- `TaskExtensions`: `Task` 클래스에 대한 확장 메서드 추가 (`Task`에 취소 토큰 적용)
+
 ## [0.2.0] - 2024-12-19
 
 ### Added
