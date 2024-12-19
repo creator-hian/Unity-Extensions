@@ -5,27 +5,41 @@ on:
 
 jobs:
   build:
+    name: Export Unity Package
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
 
-    - name: Set up Unity
-      uses: game-ci/unity-setup@v2
-      with:
-        unityVersion: '2023.1.0f1'
+      # Cache
+      - uses: actions/cache@v3
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
 
-    - name: Export Unity Package
-      run: |
-        mkdir -p output
-        /opt/unity/Editor/Unity \
-          -batchmode -nographics \
-          -projectPath ${{ github.workspace }} \
-          -exportPackage Assets/MyPackage output/MyPackage.unitypackage
+      # Set up Unity
+      - name: Set up Unity
+        uses: game-ci/unity-setup@v2
+        with:
+          unityVersion: '2023.1.0f1'
 
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: MyPackage
-        path: output/MyPackage.unitypackage
+      # Export Unity Package
+      - name: Export Unity Package
+        run: |
+          mkdir -p output
+          /opt/unity/Editor/Unity \
+            -batchmode -nographics \
+            -projectPath ${{ github.workspace }} \
+            -exportPackage Assets/MyPackage output/MyPackage.unitypackage
+
+      # Upload Artifact
+      - name: Upload Unity Package
+        uses: actions/upload-artifact@v3
+        with:
+          name: MyPackage
+          path: output/MyPackage.unitypackage
