@@ -12,6 +12,12 @@ All notable changes to this project will be documented in this file.
   - **Patch**: 하위 호환성 있는 버그 수정
 - **최신 버전이 상단에, 이전 버전이 하단에 기록됩니다.**
 
+## [0.4.0] - 2024-12-19
+
+### Added
+
+- `LocaleExtensions`: `Locale` 클래스에 대한 확장 메서드 추가 (로케일 설정, 로케일 가져오기)
+
 ## [0.3.0] - 2024-12-19
 
 ### Added

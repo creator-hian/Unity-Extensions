@@ -43,6 +43,7 @@ Unity 엔진의 기본 기능을 확장하기 위한 다양한 유틸리티와 �
 - **IEnumerableExtensions**: `IEnumerable` 인터페이스에 대한 확장 메서드를 제공합니다. 시퀀스의 각 요소에 대해 지정된 동작을 수행하는 기능을 제공합니다.
 - **AsyncOperationExtensions**: `AsyncOperation` 클래스에 대한 확장 메서드를 제공합니다. `AsyncOperation`을 `Task`로 변환하는 기능을 제공합니다.
 - **TaskExtensions**: `Task` 클래스에 대한 확장 메서드를 제공합니다. `Task`에 취소 토큰을 적용하는 기능을 제공합니다.
+- **LocaleExtensions**: `Locale` 클래스에 대한 확장 메서드를 제공합니다. `Locale`을 가져오고, 설정하고, 문자열로 변환하는 기능을 제공합니다. `UNITY_LOCALIZATION_AVAILABLE` 전처리기가 정의되어 있을 때만 사용할 수 있습니다.
 
 ## 설치 방법
 
@@ -89,7 +90,7 @@ https://github.com/creator-hian/Unity-Extensions.git
 ```json
 {
   "dependencies": {
-    "com.creator-hian.unity.extensions": "https://github.com/creator-hian/Unity-Extensions.git#0.0.1",
+    "com.creator-hian.unity.extensions": "https://github.com/creator-hian/Unity-Extensions.git#0.4.0"
     ...
   }
 }
