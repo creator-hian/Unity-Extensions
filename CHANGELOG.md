@@ -12,7 +12,16 @@ All notable changes to this project will be documented in this file.
   - **Patch**: 하위 호환성 있는 버그 수정
 - **최신 버전이 상단에, 이전 버전이 하단에 기록됩니다.**
 
-## [0.1.0] - 2024-12-05
+## [0.2.0] - 2024-12-19
+
+### Added
+
+- `LayerMaskExtensions`: `LayerMask` 클래스에 대한 확장 메서드 추가 (레이어 마스크에서 레이어 제거, 레이어 마스크에서 레이어 제거)
+- `DateTimeExtensions`: `DateTime` 클래스에 대한 확장 메서드 추가 (날짜 비교, 날짜 범위 매핑, 날짜 범위 검사)
+- `IEnumeratorExtensions`: `IEnumerator` 인터페이스에 대한 확장 메서드 추가 (`IEnumerator` 를 `IEnumerable` 로 변환)
+- `IEnumerableExtensions`: `IEnumerable` 인터페이스에 대한 확장 메서드 추가 (시퀀스의 각 요소에 대해 지정된 동작을 수행)
+
+## [0.1.0] - 2024-12-19
 
 ### Added
 
