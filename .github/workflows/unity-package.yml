@@ -1,45 +1,34 @@
-name: Unity Package Export
+name: Export Unity Package
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    name: Export Unity Package
     runs-on: ubuntu-latest
     steps:
-      # Checkout
+      # 리포지토리 체크아웃
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           lfs: true
 
-      # Cache
-      - uses: actions/cache@v3
-        with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
+      # Unity 라이선스 활성화
+      - name: Activate Unity License
+        uses: game-ci/unity-activate@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
-      # Set up Unity
-      - name: Set up Unity
-        uses: game-ci/unity-setup@v2
+      # Unity 패키지 내보내기
+      - name: Export Unity Package
+        uses: game-ci/unity-builder@v4
         with:
           unityVersion: '2023.1.0f1'
+          customParameters: -executeMethod ExportPackageExample.Editor.UnityPackageExporter.Export
 
-      # Export Unity Package
-      - name: Export Unity Package
-        run: |
-          mkdir -p output
-          /opt/unity/Editor/Unity \
-            -batchmode -nographics \
-            -projectPath ${{ github.workspace }} \
-            -exportPackage Assets/MyPackage output/MyPackage.unitypackage
-
-      # Upload Artifact
+      # 아티팩트 업로드
       - name: Upload Unity Package
         uses: actions/upload-artifact@v3
         with:
-          name: MyPackage
-          path: output/MyPackage.unitypackage
+          name: MyUnityPackage
+          path: Build/MyUnityPackage.unitypackage
