@@ -1,34 +1,40 @@
-name: Export Unity Package
+name: Export Package
 
 on:
   workflow_dispatch:
 
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
 jobs:
   build:
+    name: Build UnityPackage
     runs-on: ubuntu-latest
     steps:
-      # 리포지토리 체크아웃
+      # Checkout
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
         with:
           lfs: true
 
-      # Unity 라이선스 활성화
-      - name: Activate Unity License
-        uses: game-ci/unity-activate@v4
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-
-      # Unity 패키지 내보내기
-      - name: Export Unity Package
-        uses: game-ci/unity-builder@v4
+      # Cache
+      - name: Cache
+        uses: actions/cache@v2
         with:
-          unityVersion: '2023.1.0f1'
-          customParameters: -executeMethod ExportPackageExample.Editor.UnityPackageExporter.Export
+          path: Library
+          key: Library
+          restore-keys: Library-
 
-      # 아티팩트 업로드
-      - name: Upload Unity Package
-        uses: actions/upload-artifact@v3
+      # Build
+      - name: Build .unitypackage
+        uses: game-ci/unity-builder@v2
         with:
-          name: MyUnityPackage
-          path: Build/MyUnityPackage.unitypackage
+          unityVersion: 2020.3.1f1 # Secretsに登録したULFのUnityバージョン
+          buildMethod: ExportPackageExample.Editor.UnityPackageExporter.Export # 名前空間を含むエクスポート関数の名前
+
+      # Upload
+      - name: Upload .unitypackage
+        uses: actions/upload-artifact@v2
+        with:
+          name: Unity Package
+          path: Build
