@@ -1,0 +1,25 @@
+{
+    "name": "Hian.Unity.Extensions.Localization",
+    "rootNamespace": "",
+    "references": [
+        "GUID:5e5dbc5ecbe138241a295b2c2fc5eeea",
+        "GUID:eec0964c48f6f4e40bc3ec2257ccf8c5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_LOCALIZATION_AVAILABLE"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.localization",
+            "expression": "1",
+            "define": "UNITY_LOCALIZATION_AVAILABLE"
+        }
+    ],
+    "noEngineReferences": false
+}
