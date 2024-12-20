@@ -65,10 +65,11 @@ Unity 엔진의 기본 기능을 확장하기 위한 다양한 유틸리티와 �
 ```text
 https://github.com/creator-hian/Unity-Extensions.git
 ```
-
+<!-- markdownlint-disable MD029 -->
 4. 'Add' 버튼을 클릭합니다.
 
    ![Package Manager Add Button](Document/upm-ui-giturl-add.png)
+<!-- markdownlint-enable MD029 -->
 
 #### 설치 방법 2: manifest.json 직접 수정
 
