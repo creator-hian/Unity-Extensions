@@ -11,7 +11,7 @@ namespace Hian.Extensions
         /// </summary>
         public static Task AsTask(this AsyncOperation asyncOp)
         {
-            var tcs = new TaskCompletionSource<object>();
+            TaskCompletionSource<object> tcs = new TaskCompletionSource<object>();
 
             asyncOp.completed += (operation) =>
             {
