@@ -26,8 +26,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="x">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithX(this Quaternion quaternion, float x) =>
-            With(quaternion, 0, x);
+        public static Quaternion WithX(this Quaternion quaternion, float x)
+        {
+            return With(quaternion, 0, x);
+        }
 
         /// <summary>
         /// y 축에 <paramref name="y"/> 값을 설정합니다.
@@ -35,8 +37,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="y">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithY(this Quaternion quaternion, float y) =>
-            With(quaternion, 1, y);
+        public static Quaternion WithY(this Quaternion quaternion, float y)
+        {
+            return With(quaternion, 1, y);
+        }
 
         /// <summary>
         /// z 축에 <paramref name="z"/> 값을 설정합니다.
@@ -44,8 +48,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="z">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithZ(this Quaternion quaternion, float z) =>
-            With(quaternion, 2, z);
+        public static Quaternion WithZ(this Quaternion quaternion, float z)
+        {
+            return With(quaternion, 2, z);
+        }
 
         /// <summary>
         /// w 축에 <paramref name="w"/> 값을 설정합니다.
@@ -53,8 +59,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="w">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithW(this Quaternion quaternion, float w) =>
-            With(quaternion, 3, w);
+        public static Quaternion WithW(this Quaternion quaternion, float w)
+        {
+            return With(quaternion, 3, w);
+        }
 
         /// <summary>
         /// 지정된 축들에 값을 설정합니다.
@@ -85,8 +93,10 @@ namespace Hian.Extensions
         /// <param name="x">설정할 값.</param>
         /// <param name="y">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXY(this Quaternion quaternion, float x, float y) =>
-            With(quaternion, 0, x, 1, y);
+        public static Quaternion WithXY(this Quaternion quaternion, float x, float y)
+        {
+            return With(quaternion, 0, x, 1, y);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -94,8 +104,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXY(this Quaternion quaternion, Vector2 values) =>
-            With(quaternion, 0, values.x, 1, values.y);
+        public static Quaternion WithXY(this Quaternion quaternion, Vector2 values)
+        {
+            return With(quaternion, 0, values.x, 1, values.y);
+        }
 
         /// <summary>
         /// x, z 축에 각각 <paramref name="x"/>, <paramref name="z"/> 값을 설정합니다.
@@ -104,8 +116,10 @@ namespace Hian.Extensions
         /// <param name="x">설정할 값.</param>
         /// <param name="z">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXZ(this Quaternion quaternion, float x, float z) =>
-            With(quaternion, 0, x, 2, z);
+        public static Quaternion WithXZ(this Quaternion quaternion, float x, float z)
+        {
+            return With(quaternion, 0, x, 2, z);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -113,8 +127,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXZ(this Quaternion quaternion, Vector2 values) =>
-            With(quaternion, 0, values.x, 2, values.y);
+        public static Quaternion WithXZ(this Quaternion quaternion, Vector2 values)
+        {
+            return With(quaternion, 0, values.x, 2, values.y);
+        }
 
         /// <summary>
         /// y, z 축에 각각 <paramref name="y"/>, <paramref name="z"/> 값을 설정합니다.
@@ -123,8 +139,10 @@ namespace Hian.Extensions
         /// <param name="y">설정할 값.</param>
         /// <param name="z">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithYZ(this Quaternion quaternion, float y, float z) =>
-            With(quaternion, 1, y, 2, z);
+        public static Quaternion WithYZ(this Quaternion quaternion, float y, float z)
+        {
+            return With(quaternion, 1, y, 2, z);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -132,8 +150,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithYZ(this Quaternion quaternion, Vector2 values) =>
-            With(quaternion, 1, values.x, 2, values.y);
+        public static Quaternion WithYZ(this Quaternion quaternion, Vector2 values)
+        {
+            return With(quaternion, 1, values.x, 2, values.y);
+        }
 
         /// <summary>
         /// x, w 축에 각각 <paramref name="x"/>, <paramref name="w"/> 값을 설정합니다.
@@ -142,8 +162,10 @@ namespace Hian.Extensions
         /// <param name="x">설정할 값.</param>
         /// <param name="w">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXW(this Quaternion quaternion, float x, float w) =>
-            With(quaternion, 0, x, 3, w);
+        public static Quaternion WithXW(this Quaternion quaternion, float x, float w)
+        {
+            return With(quaternion, 0, x, 3, w);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -151,8 +173,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXW(this Quaternion quaternion, Vector2 values) =>
-            With(quaternion, 0, values.x, 3, values.y);
+        public static Quaternion WithXW(this Quaternion quaternion, Vector2 values)
+        {
+            return With(quaternion, 0, values.x, 3, values.y);
+        }
 
         /// <summary>
         /// y, w 축에 각각 <paramref name="y"/>, <paramref name="w"/> 값을 설정합니다.
@@ -161,8 +185,10 @@ namespace Hian.Extensions
         /// <param name="y">설정할 값.</param>
         /// <param name="w">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithYW(this Quaternion quaternion, float y, float w) =>
-            With(quaternion, 1, y, 3, w);
+        public static Quaternion WithYW(this Quaternion quaternion, float y, float w)
+        {
+            return With(quaternion, 1, y, 3, w);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -170,8 +196,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithYW(this Quaternion quaternion, Vector2 values) =>
-            With(quaternion, 1, values.x, 3, values.y);
+        public static Quaternion WithYW(this Quaternion quaternion, Vector2 values)
+        {
+            return With(quaternion, 1, values.x, 3, values.y);
+        }
 
         /// <summary>
         /// z, w 축에 각각 <paramref name="z"/>, <paramref name="w"/> 값을 설정합니다.
@@ -180,8 +208,10 @@ namespace Hian.Extensions
         /// <param name="z">설정할 값.</param>
         /// <param name="w">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithZW(this Quaternion quaternion, float z, float w) =>
-            With(quaternion, 2, z, 3, w);
+        public static Quaternion WithZW(this Quaternion quaternion, float z, float w)
+        {
+            return With(quaternion, 2, z, 3, w);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -189,8 +219,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithZW(this Quaternion quaternion, Vector2 values) =>
-            With(quaternion, 2, values.x, 3, values.y);
+        public static Quaternion WithZW(this Quaternion quaternion, Vector2 values)
+        {
+            return With(quaternion, 2, values.x, 3, values.y);
+        }
 
         /// <summary>
         /// 지정된 축들에 값을 설정합니다.
@@ -227,8 +259,10 @@ namespace Hian.Extensions
         /// <param name="y">설정할 값.</param>
         /// <param name="z">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXYZ(this Quaternion quaternion, float x, float y, float z) =>
-            With(quaternion, 0, x, 1, y, 2, z);
+        public static Quaternion WithXYZ(this Quaternion quaternion, float x, float y, float z)
+        {
+            return With(quaternion, 0, x, 1, y, 2, z);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -236,8 +270,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXYZ(this Quaternion quaternion, Vector3 values) =>
-            With(quaternion, 0, values.x, 1, values.y, 2, values.z);
+        public static Quaternion WithXYZ(this Quaternion quaternion, Vector3 values)
+        {
+            return With(quaternion, 0, values.x, 1, values.y, 2, values.z);
+        }
 
         /// <summary>
         /// x, y, w 축에 각각 <paramref name="x"/>, <paramref name="y"/>, <paramref name="w"/> 값을 설정합니다.
@@ -247,8 +283,10 @@ namespace Hian.Extensions
         /// <param name="y">설정할 값.</param>
         /// <param name="w">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXYW(this Quaternion quaternion, float x, float y, float w) =>
-            With(quaternion, 0, x, 1, y, 3, w);
+        public static Quaternion WithXYW(this Quaternion quaternion, float x, float y, float w)
+        {
+            return With(quaternion, 0, x, 1, y, 3, w);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -256,8 +294,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXYW(this Quaternion quaternion, Vector3 values) =>
-            With(quaternion, 0, values.x, 1, values.y, 3, values.z);
+        public static Quaternion WithXYW(this Quaternion quaternion, Vector3 values)
+        {
+            return With(quaternion, 0, values.x, 1, values.y, 3, values.z);
+        }
 
         /// <summary>
         /// x, z, w 축에 각각 <paramref name="x"/>, <paramref name="z"/>, <paramref name="w"/> 값을 설정합니다.
@@ -267,8 +307,10 @@ namespace Hian.Extensions
         /// <param name="z">설정할 값.</param>
         /// <param name="w">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXZW(this Quaternion quaternion, float x, float z, float w) =>
-            With(quaternion, 0, x, 2, z, 3, w);
+        public static Quaternion WithXZW(this Quaternion quaternion, float x, float z, float w)
+        {
+            return With(quaternion, 0, x, 2, z, 3, w);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -276,8 +318,10 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithXZW(this Quaternion quaternion, Vector3 values) =>
-            With(quaternion, 0, values.x, 2, values.y, 3, values.z);
+        public static Quaternion WithXZW(this Quaternion quaternion, Vector3 values)
+        {
+            return With(quaternion, 0, values.x, 2, values.y, 3, values.z);
+        }
 
         /// <summary>
         /// y, z, w 축에 각각 <paramref name="y"/>, <paramref name="z"/>, <paramref name="w"/> 값을 설정합니다.
@@ -287,8 +331,10 @@ namespace Hian.Extensions
         /// <param name="z">설정할 값.</param>
         /// <param name="w">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithYZW(this Quaternion quaternion, float y, float z, float w) =>
-            With(quaternion, 1, y, 2, z, 3, w);
+        public static Quaternion WithYZW(this Quaternion quaternion, float y, float z, float w)
+        {
+            return With(quaternion, 1, y, 2, z, 3, w);
+        }
 
         /// <summary>
         /// 지정된 축들에 <paramref name="values"/>의 컴포넌트 값을 설정합니다.
@@ -296,7 +342,9 @@ namespace Hian.Extensions
         /// <param name="quaternion">대상 Quaternion.</param>
         /// <param name="values">설정할 값.</param>
         /// <returns><see cref="With(Quaternion, int, float)"/>와 동일합니다.</returns>
-        public static Quaternion WithYZW(this Quaternion quaternion, Vector3 values) =>
-            With(quaternion, 1, values.x, 2, values.y, 3, values.z);
+        public static Quaternion WithYZW(this Quaternion quaternion, Vector3 values)
+        {
+            return With(quaternion, 1, values.x, 2, values.y, 3, values.z);
+        }
     }
 }

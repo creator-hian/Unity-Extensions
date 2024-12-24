@@ -15,10 +15,10 @@ public class Vector2ExtensionsTests
     public void WithX_WhenCalled_UpdatesXValueOnly()
     {
         // Arrange
-        var vector = new Vector2(1f, 1f);
+        Vector2 vector = new Vector2(1f, 1f);
 
         // Act
-        var result = vector.WithX(2f);
+        Vector2 result = vector.WithX(2f);
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -32,12 +32,12 @@ public class Vector2ExtensionsTests
     public void InRangeOf_WhenInRange_ReturnsTrue()
     {
         // Arrange
-        var current = new Vector2(0f, 0f);
-        var target = new Vector2(1f, 1f);
+        Vector2 current = new Vector2(0f, 0f);
+        Vector2 target = new Vector2(1f, 1f);
         float range = 2f;
 
         // Act
-        var result = current.InRangeOf(target, range);
+        bool result = current.InRangeOf(target, range);
 
         // Assert
         Assert.IsTrue(result);
@@ -50,12 +50,12 @@ public class Vector2ExtensionsTests
     public void InRangeOf_WhenOutOfRange_ReturnsFalse()
     {
         // Arrange
-        var current = new Vector2(0f, 0f);
-        var target = new Vector2(2f, 2f);
+        Vector2 current = new Vector2(0f, 0f);
+        Vector2 target = new Vector2(2f, 2f);
         float range = 1f;
 
         // Act
-        var result = current.InRangeOf(target, range);
+        bool result = current.InRangeOf(target, range);
 
         // Assert
         Assert.IsFalse(result);
@@ -70,10 +70,10 @@ public class Vector2ExtensionsTests
     public void Round_TestCases(float inX, float inY, float expectedX, float expectedY)
     {
         // Arrange
-        var vector = new Vector2(inX, inY);
+        Vector2 vector = new Vector2(inX, inY);
 
         // Act
-        var result = vector.Round();
+        Vector2 result = vector.Round();
 
         // Assert
         Assert.AreEqual(expectedX, result.x, FloatTolerance);
@@ -87,10 +87,10 @@ public class Vector2ExtensionsTests
     public void RoundArithmetic_RoundsToFirstDecimalPlaceCorrectly()
     {
         // Arrange
-        var vector = new Vector2(2.5f, 3.5f);
+        Vector2 vector = new Vector2(2.5f, 3.5f);
 
         // Act
-        var result = vector.RoundArithmetic(0);
+        Vector2 result = vector.RoundArithmetic(0);
 
         // Assert
         Assert.AreEqual(3f, result.x, FloatTolerance);
@@ -104,19 +104,19 @@ public class Vector2ExtensionsTests
     public void RoundArithmetic_RoundsToSecondDecimalPlaceCorrectly()
     {
         // Arrange
-        var vector = new Vector2(1.55f, 2.25f);
+        Vector2 vector = new Vector2(1.55f, 2.25f);
 
         // Act
-        var result = vector.RoundArithmetic(1);
+        Vector2 result = vector.RoundArithmetic(1);
 
         // Assert
         Assert.AreEqual(
-            (float)System.Math.Round(1.55f, 1, MidpointRounding.AwayFromZero),
+            (float)Math.Round(1.55f, 1, MidpointRounding.AwayFromZero),
             result.x,
             FloatTolerance
         );
         Assert.AreEqual(
-            (float)System.Math.Round(2.25f, 1, MidpointRounding.AwayFromZero),
+            (float)Math.Round(2.25f, 1, MidpointRounding.AwayFromZero),
             result.y,
             FloatTolerance
         );
@@ -129,10 +129,10 @@ public class Vector2ExtensionsTests
     public void RoundArithmetic_RoundsNegativeNumbersCorrectly()
     {
         // Arrange
-        var vector = new Vector2(-1.6f, -2.2f);
+        Vector2 vector = new Vector2(-1.6f, -2.2f);
 
         // Act
-        var result = vector.RoundArithmetic(0);
+        Vector2 result = vector.RoundArithmetic(0);
 
         // Assert
         Assert.AreEqual(-2f, result.x, FloatTolerance);
@@ -146,11 +146,11 @@ public class Vector2ExtensionsTests
     public void Rotate_WhenCalled_RotatesVectorCorrectly()
     {
         // Arrange
-        var vector = new Vector2(1f, 0f);
+        Vector2 vector = new Vector2(1f, 0f);
         float angle = 90f;
 
         // Act
-        var result = vector.Rotate(angle);
+        Vector2 result = vector.Rotate(angle);
 
         // Assert
         Assert.AreEqual(0f, result.x, RotationTolerance);
@@ -164,12 +164,12 @@ public class Vector2ExtensionsTests
     public void Rotate_WithPivot_RotatesAroundPivotCorrectly()
     {
         // Arrange
-        var vector = new Vector2(2f, 0f);
-        var pivot = new Vector2(1f, 0f);
+        Vector2 vector = new Vector2(2f, 0f);
+        Vector2 pivot = new Vector2(1f, 0f);
         float angle = 90f;
 
         // Act
-        var result = vector.Rotate(angle, pivot);
+        Vector2 result = vector.Rotate(angle, pivot);
 
         // Assert
         Assert.AreEqual(1f, result.x, RotationTolerance);
@@ -183,11 +183,11 @@ public class Vector2ExtensionsTests
     public void RotateRadians_WhenCalled_RotatesVectorCorrectly()
     {
         // Arrange
-        var vector = new Vector2(1f, 0f);
+        Vector2 vector = new Vector2(1f, 0f);
         float radians = Mathf.PI / 2f; // 90도
 
         // Act
-        var result = vector.RotateRadians(radians);
+        Vector2 result = vector.RotateRadians(radians);
 
         // Assert
         Assert.AreEqual(0f, result.x, RotationTolerance);
@@ -201,12 +201,12 @@ public class Vector2ExtensionsTests
     public void RotateRadians_WithPivot_RotatesAroundPivotCorrectly()
     {
         // Arrange
-        var vector = new Vector2(2f, 0f);
-        var pivot = new Vector2(1f, 0f);
+        Vector2 vector = new Vector2(2f, 0f);
+        Vector2 pivot = new Vector2(1f, 0f);
         float radians = Mathf.PI / 2f; // 90도
 
         // Act
-        var result = vector.RotateRadians(radians, pivot);
+        Vector2 result = vector.RotateRadians(radians, pivot);
 
         // Assert
         Assert.AreEqual(1f, result.x, RotationTolerance);
@@ -220,10 +220,10 @@ public class Vector2ExtensionsTests
     public void Rotate90Clockwise_WhenCalled_RotatesVector90DegreesCorrectly()
     {
         // Arrange
-        var vector = new Vector2(1f, 0f);
+        Vector2 vector = new Vector2(1f, 0f);
 
         // Act
-        var result = vector.Rotate90Clockwise();
+        Vector2 result = vector.Rotate90Clockwise();
 
         // Assert
         Assert.AreEqual(0f, result.x, FloatTolerance);
@@ -237,10 +237,10 @@ public class Vector2ExtensionsTests
     public void Rotate90CounterClockwise_WhenCalled_RotatesVector90DegreesCorrectly()
     {
         // Arrange
-        var vector = new Vector2(1f, 0f);
+        Vector2 vector = new Vector2(1f, 0f);
 
         // Act
-        var result = vector.Rotate90CounterClockwise();
+        Vector2 result = vector.Rotate90CounterClockwise();
 
         // Assert
         Assert.AreEqual(0f, result.x, FloatTolerance);
@@ -254,17 +254,17 @@ public class Vector2ExtensionsTests
     public void Abs_WhenCalled_ReturnsAbsoluteValues()
     {
         // Arrange
-        var vectors = new[]
+        Vector2[] vectors = new[]
         {
             new Vector2(1.5f, 2.5f), // 양수 케이스
             new Vector2(-1.5f, -2.5f), // 음수 케이스
             new Vector2(0f, 0f), // 0 케이스
         };
 
-        foreach (var vector in vectors)
+        foreach (Vector2 vector in vectors)
         {
             // Act
-            var result = vector.Abs();
+            Vector2 result = vector.Abs();
 
             // Assert
             Assert.AreEqual(Mathf.Abs(vector.x), result.x, FloatTolerance);
@@ -279,12 +279,12 @@ public class Vector2ExtensionsTests
     public void Clamp_WhenCalled_ClampsComponentsCorrectly()
     {
         // Arrange
-        var vector = new Vector2(-1f, 3f);
+        Vector2 vector = new Vector2(-1f, 3f);
         float min = 0f;
         float max = 2f;
 
         // Act
-        var result = vector.Clamp(min, max);
+        Vector2 result = vector.Clamp(min, max);
 
         // Assert
         Assert.AreEqual(0f, result.x);
@@ -301,10 +301,10 @@ public class Vector2ExtensionsTests
     public void ToVector3_WhenCalled_CreatesCorrectVector3()
     {
         // Arrange
-        var vector2 = new Vector2(1f, 2f);
+        Vector2 vector2 = new Vector2(1f, 2f);
 
         // Act
-        var result = vector2.ToVector3(3f);
+        Vector3 result = vector2.ToVector3(3f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -322,10 +322,10 @@ public class Vector2ExtensionsTests
     public void ToVector3XZ_WhenCalled_CreatesCorrectVector3()
     {
         // Arrange
-        var vector2 = new Vector2(1f, 2f);
+        Vector2 vector2 = new Vector2(1f, 2f);
 
         // Act
-        var result = vector2.ToVector3XZ(3f);
+        Vector3 result = vector2.ToVector3XZ(3f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -337,12 +337,12 @@ public class Vector2ExtensionsTests
     public void Clamp_WhenMinEqualsMax_ReturnsMinValue()
     {
         // Arrange
-        var vector = new Vector2(0.5f, 1.5f);
+        Vector2 vector = new Vector2(0.5f, 1.5f);
         float min = 1f;
         float max = 1f;
 
         // Act
-        var result = vector.Clamp(min, max);
+        Vector2 result = vector.Clamp(min, max);
 
         // Assert
         Assert.AreEqual(min, result.x);
@@ -353,12 +353,12 @@ public class Vector2ExtensionsTests
     public void Clamp_WhenMinGreaterThanMax_ThrowsArgumentException()
     {
         // Arrange
-        var vector = new Vector2(1f, 1f);
+        Vector2 vector = new Vector2(1f, 1f);
         float min = 2f;
         float max = 1f;
 
         // Act & Assert
-        Assert.Throws<ArgumentException>(() => vector.Clamp(min, max));
+        _ = Assert.Throws<ArgumentException>(() => vector.Clamp(min, max));
     }
 
     [Test]
@@ -414,11 +414,11 @@ public class Vector2ExtensionsTests
     public void With_WhenCalled_UpdatesSpecifiedAxisValue()
     {
         // Arrange
-        var vector = new Vector2(1f, 1f);
+        Vector2 vector = new Vector2(1f, 1f);
 
         // Act
-        var resultX = vector.With(0, 2f);
-        var resultY = vector.With(1, 3f);
+        Vector2 resultX = vector.With(0, 2f);
+        Vector2 resultY = vector.With(1, 3f);
 
         // Assert
         Assert.AreEqual(2f, resultX.x);
@@ -434,10 +434,10 @@ public class Vector2ExtensionsTests
     public void With_WhenCalledWithInvalidAxis_ThrowsArgumentOutOfRangeException()
     {
         // Arrange
-        var vector = new Vector2(1f, 1f);
+        Vector2 vector = new Vector2(1f, 1f);
 
         // Act & Assert
-        Assert.Throws<ArgumentOutOfRangeException>(() => vector.With(2, 2f));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => vector.With(2, 2f));
     }
 
     /// <summary>
@@ -447,10 +447,10 @@ public class Vector2ExtensionsTests
     public void WithXY_WhenCalled_UpdatesXAndYValues()
     {
         // Arrange
-        var vector = new Vector2(1f, 1f);
+        Vector2 vector = new Vector2(1f, 1f);
 
         // Act
-        var result = vector.WithXY(2f, 3f);
+        Vector2 result = vector.WithXY(2f, 3f);
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -468,11 +468,11 @@ public class Vector2ExtensionsTests
     public void WithNegate_WhenCalled_NegatesSpecifiedAxisValue()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var resultX = vector.WithNegate(0);
-        var resultY = vector.WithNegate(1);
+        Vector2 resultX = vector.WithNegate(0);
+        Vector2 resultY = vector.WithNegate(1);
 
         // Assert
         Assert.AreEqual(-1f, resultX.x);
@@ -488,10 +488,10 @@ public class Vector2ExtensionsTests
     public void WithNegateX_WhenCalled_NegatesXValue()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var result = vector.WithNegateX();
+        Vector2 result = vector.WithNegateX();
 
         // Assert
         Assert.AreEqual(-1f, result.x);
@@ -505,10 +505,10 @@ public class Vector2ExtensionsTests
     public void WithNegateY_WhenCalled_NegatesYValue()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var result = vector.WithNegateY();
+        Vector2 result = vector.WithNegateY();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -522,10 +522,10 @@ public class Vector2ExtensionsTests
     public void Negate_WhenCalled_NegatesAllComponents()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var result = vector.Negate();
+        Vector2 result = vector.Negate();
 
         // Assert
         Assert.AreEqual(-1f, result.x);
@@ -543,10 +543,10 @@ public class Vector2ExtensionsTests
     public void MaxComponent_WhenCalled_ReturnsIndexOfMaxValue()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var (index, value) = vector.MaxComponent();
+        (int index, float value) = vector.MaxComponent();
 
         // Assert
         Assert.AreEqual(1, index);
@@ -560,10 +560,10 @@ public class Vector2ExtensionsTests
     public void MinComponent_WhenCalled_ReturnsIndexOfMinValue()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var (index, value) = vector.MinComponent();
+        (int index, float value) = vector.MinComponent();
 
         // Assert
         Assert.AreEqual(0, index);
@@ -581,14 +581,14 @@ public class Vector2ExtensionsTests
     public void Remap_WhenCalled_RemapsAllComponentsToNewRange()
     {
         // Arrange
-        var vector = new Vector2(0f, 10f);
+        Vector2 vector = new Vector2(0f, 10f);
         float min1 = 0f;
         float max1 = 10f;
         float min2 = 0f;
         float max2 = 100f;
 
         // Act
-        var result = vector.Remap(min1, max1, min2, max2);
+        Vector2 result = vector.Remap(min1, max1, min2, max2);
 
         // Assert
         Assert.AreEqual(0f, result.x, FloatTolerance);
@@ -602,10 +602,10 @@ public class Vector2ExtensionsTests
     public void Clamp01_WhenCalled_ClampsAllComponentsBetween0And1()
     {
         // Arrange
-        var vector = new Vector2(-1f, 2f);
+        Vector2 vector = new Vector2(-1f, 2f);
 
         // Act
-        var result = vector.Clamp01();
+        Vector2 result = vector.Clamp01();
 
         // Assert
         Assert.AreEqual(0f, result.x);
@@ -623,11 +623,11 @@ public class Vector2ExtensionsTests
     public void Divide_WhenCalled_DividesAllComponentsByOtherVector()
     {
         // Arrange
-        var vector = new Vector2(4f, 6f);
-        var other = new Vector2(2f, 3f);
+        Vector2 vector = new Vector2(4f, 6f);
+        Vector2 other = new Vector2(2f, 3f);
 
         // Act
-        var result = vector.Divide(other);
+        Vector2 result = vector.Divide(other);
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -641,10 +641,10 @@ public class Vector2ExtensionsTests
     public void IsUniform_WhenCalled_ReturnsTrueIfAllComponentsAreEqual()
     {
         // Arrange
-        var vector = new Vector2(1f, 1f);
+        Vector2 vector = new Vector2(1f, 1f);
 
         // Act
-        var result = vector.IsUniform();
+        bool result = vector.IsUniform();
 
         // Assert
         Assert.IsTrue(result);
@@ -657,10 +657,10 @@ public class Vector2ExtensionsTests
     public void IsUniform_WhenCalled_ReturnsFalseIfAllComponentsAreNotEqual()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var result = vector.IsUniform();
+        bool result = vector.IsUniform();
 
         // Assert
         Assert.IsFalse(result);
@@ -678,11 +678,11 @@ public class Vector2ExtensionsTests
     public void GetClosestPoint_WhenCalled_ReturnsClosestPointInfo()
     {
         // Arrange
-        var point = new Vector2(0f, 0f);
-        var points = new[] { new Vector2(1f, 1f), new Vector2(2f, 2f), new Vector2(3f, 3f) };
+        Vector2 point = new Vector2(0f, 0f);
+        Vector2[] points = new[] { new Vector2(1f, 1f), new Vector2(2f, 2f), new Vector2(3f, 3f) };
 
         // Act
-        var (closestPoint, index) = point.GetClosestPoint(points);
+        (Vector2 closestPoint, int index) = point.GetClosestPoint(points);
 
         // Assert
         Assert.AreEqual(new Vector2(1f, 1f), closestPoint);
@@ -696,12 +696,12 @@ public class Vector2ExtensionsTests
     public void GetClosestPointOnRay_WhenCalled_ReturnsClosestPointInfoOnRay()
     {
         // Arrange
-        var point = new Vector2(2f, 2f);
-        var origin = new Vector2(0f, 0f);
-        var direction = new Vector2(1f, 0f).normalized;
+        Vector2 point = new Vector2(2f, 2f);
+        Vector2 origin = new Vector2(0f, 0f);
+        Vector2 direction = new Vector2(1f, 0f).normalized;
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnRay(origin, direction);
+        (Vector2 closestPoint, float distance) = point.GetClosestPointOnRay(origin, direction);
 
         // Assert
         Assert.AreEqual(new Vector2(2f, 0f), closestPoint);
@@ -715,12 +715,12 @@ public class Vector2ExtensionsTests
     public void GetClosestPointOnSegment_WhenCalled_ReturnsClosestPointInfoOnSegment()
     {
         // Arrange
-        var point = new Vector2(2f, 2f);
-        var start = new Vector2(0f, 0f);
-        var end = new Vector2(4f, 0f);
+        Vector2 point = new Vector2(2f, 2f);
+        Vector2 start = new Vector2(0f, 0f);
+        Vector2 end = new Vector2(4f, 0f);
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnSegment(start, end);
+        (Vector2 closestPoint, float distance) = point.GetClosestPointOnSegment(start, end);
 
         // Assert
         Assert.AreEqual(new Vector2(2f, 0f), closestPoint);
@@ -734,11 +734,11 @@ public class Vector2ExtensionsTests
     public void RandomDeflected_WhenCalled_ReturnsDeflectedDirectionVector()
     {
         // Arrange
-        var direction = new Vector2(1f, 0f);
+        Vector2 direction = new Vector2(1f, 0f);
         float angle = 90f;
 
         // Act
-        var result = direction.RandomDeflected(angle);
+        Vector2 result = direction.RandomDeflected(angle);
 
         // Assert
         Assert.AreEqual(direction.magnitude, result.magnitude, FloatTolerance);
@@ -751,10 +751,10 @@ public class Vector2ExtensionsTests
     public void InsertX_WhenCalled_Returns3DVectorWithInsertedX()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var result = vector.InsertX(3f);
+        Vector3 result = vector.InsertX(3f);
 
         // Assert
         Assert.AreEqual(3f, result.x);
@@ -769,10 +769,10 @@ public class Vector2ExtensionsTests
     public void InsertY_WhenCalled_Returns3DVectorWithInsertedY()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var result = vector.InsertY(3f);
+        Vector3 result = vector.InsertY(3f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -787,10 +787,10 @@ public class Vector2ExtensionsTests
     public void InsertZ_WhenCalled_Returns3DVectorWithInsertedZ()
     {
         // Arrange
-        var vector = new Vector2(1f, 2f);
+        Vector2 vector = new Vector2(1f, 2f);
 
         // Act
-        var result = vector.InsertZ(3f);
+        Vector3 result = vector.InsertZ(3f);
 
         // Assert
         Assert.AreEqual(1f, result.x);

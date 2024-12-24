@@ -17,22 +17,17 @@ namespace Hian.Extensions
         /// <exception cref="System.ArgumentOutOfRangeException">채널 인덱스가 0, 1, 2, 3이 아닌 경우 발생합니다.</exception>
         public static Color With(this Color color, int channel, float value)
         {
-            switch (channel)
+            return channel switch
             {
-                case 0:
-                    return color.WithR(value);
-                case 1:
-                    return color.WithG(value);
-                case 2:
-                    return color.WithB(value);
-                case 3:
-                    return color.WithA(value);
-                default:
-                    throw new System.ArgumentOutOfRangeException(
-                        "channel",
-                        "채널 인덱스는 0, 1, 2, 3 중 하나여야 합니다."
-                    );
-            }
+                0 => color.WithR(value),
+                1 => color.WithG(value),
+                2 => color.WithB(value),
+                3 => color.WithA(value),
+                _ => throw new System.ArgumentOutOfRangeException(
+                    "channel",
+                    "채널 인덱스는 0, 1, 2, 3 중 하나여야 합니다."
+                ),
+            };
         }
 
         /// <summary>

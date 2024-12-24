@@ -17,8 +17,10 @@ namespace Hian.Extensions
         /// <typeparam name="T">요소 타입.</typeparam>
         /// <param name="enumerable">대상 열거형.</param>
         /// <returns>열거형에서 임의의 요소.</returns>
-        public static T GetRandom<T>(this IEnumerable<T> enumerable) =>
-            enumerable.ElementAt(UnityRandom.Range(0, enumerable.Count()));
+        public static T GetRandom<T>(this IEnumerable<T> enumerable)
+        {
+            return enumerable.ElementAt(UnityRandom.Range(0, enumerable.Count()));
+        }
 
         /// <summary>
         /// <paramref name="enumerable"/>에서 임의의 요소들을 가져옵니다.
@@ -35,9 +37,11 @@ namespace Hian.Extensions
         )
         {
             if (clampCount)
+            {
                 count = Mathf.Min(count, enumerable.Count());
+            }
 
-            var poppedIndexes = Enumerable
+            IEnumerable<int> poppedIndexes = Enumerable
                 .Range(0, enumerable.Count())
                 .ToList()
                 .PopRandoms(count)
@@ -52,8 +56,10 @@ namespace Hian.Extensions
         /// <param name="enumerable">대상 열거형.</param>
         /// <param name="elements">제외할 요소들.</param>
         /// <returns>지정된 요소들이 제외된 리스트.</returns>
-        public static List<T> Except<T>(this IEnumerable<T> enumerable, params T[] elements) =>
-            enumerable.Except((IEnumerable<T>)elements).ToList();
+        public static List<T> Except<T>(this IEnumerable<T> enumerable, params T[] elements)
+        {
+            return enumerable.Except((IEnumerable<T>)elements).ToList();
+        }
 
         /// <summary>
         /// <paramref name="enumerable"/>을 섞습니다.
@@ -61,8 +67,10 @@ namespace Hian.Extensions
         /// <typeparam name="T">요소 타입.</typeparam>
         /// <param name="enumerable">대상 열거형.</param>
         /// <returns>섞인 결과.</returns>
-        public static List<T> Shuffled<T>(this IEnumerable<T> enumerable) =>
-            enumerable.OrderBy(v => UnityRandom.value).ToList();
+        public static List<T> Shuffled<T>(this IEnumerable<T> enumerable)
+        {
+            return enumerable.OrderBy(static v => UnityRandom.value).ToList();
+        }
 
         /// <summary>
         /// 열거형을 <see langword="[a, b, c, ...]"/> 형식의 문자열로 표현합니다.
@@ -70,8 +78,10 @@ namespace Hian.Extensions
         /// <typeparam name="T">요소 타입.</typeparam>
         /// <param name="enumerable">대상 열거형.</param>
         /// <returns><paramref name="enumerable"/>의 문자열 표현.</returns>
-        public static string AsString<T>(this IEnumerable<T> enumerable) =>
-            $"[{string.Join(", ", enumerable)}]";
+        public static string AsString<T>(this IEnumerable<T> enumerable)
+        {
+            return $"[{string.Join(", ", enumerable)}]";
+        }
 
         /// <summary>
         /// 확률 선택기를 사용하여 임의의 요소 인덱스를 가져옵니다.
@@ -84,7 +94,10 @@ namespace Hian.Extensions
         public static (T element, int index) GetRandomWithProbability<T>(
             this IEnumerable<T> enumerable,
             params float[] probabilities
-        ) => GetRandomWithProbability(enumerable, (IEnumerable<float>)probabilities);
+        )
+        {
+            return GetRandomWithProbability(enumerable, (IEnumerable<float>)probabilities);
+        }
 
         /// <summary>
         /// 확률 선택기를 사용하여 임의의 요소 인덱스를 가져옵니다.
@@ -99,12 +112,10 @@ namespace Hian.Extensions
             this IEnumerable<T> enumerable,
             double? probabilitiesSum,
             params float[] probabilities
-        ) =>
-            GetRandomWithProbability(
-                enumerable,
-                (IEnumerable<float>)probabilities,
-                (float)probabilitiesSum
-            );
+        )
+        {
+            return GetRandomWithProbability(enumerable, probabilities, (float)probabilitiesSum);
+        }
 
         /// <summary>
         /// <inheritdoc cref="GetRandomWithProbability{T}"/>
@@ -121,38 +132,46 @@ namespace Hian.Extensions
             float? probabilitiesSum = null
         )
         {
-            var count = enumerable.Count();
+            int count = enumerable.Count();
 
             if (probabilities.Count() != count)
+            {
                 throw new ArgumentException($"확률과 열거형 요소의 개수가 일치해야 합니다.");
+            }
 
             if (count == 0)
+            {
                 throw new ArgumentException($"열거형의 개수는 0보다 커야 합니다.");
+            }
 
             if (probabilitiesSum == null)
             {
                 probabilitiesSum = 0f;
 
-                foreach (var element in probabilities)
+                foreach (float element in probabilities)
+                {
                     probabilitiesSum += element;
+                }
             }
 
-            var randomValue = UnityRandom.value * probabilitiesSum.Value;
+            float randomValue = UnityRandom.value * probabilitiesSum.Value;
 
-            var sum = 0f;
-            var index = -1;
+            float sum = 0f;
+            int index = -1;
 
-            var enumerator = probabilities.GetEnumerator();
+            IEnumerator<float> enumerator = probabilities.GetEnumerator();
 
             while (enumerator.MoveNext())
             {
                 index += 1;
-                var probability = enumerator.Current;
+                float probability = enumerator.Current;
 
                 sum += probability;
 
                 if (randomValue < sum || randomValue.Approx(sum))
+                {
                     return (enumerable.ElementAt(index), index);
+                }
             }
 
             index = count - 1;
@@ -174,35 +193,41 @@ namespace Hian.Extensions
             float? probabilitiesSum = null
         )
         {
-            var count = enumerable.Count();
+            int count = enumerable.Count();
 
             if (count == 0)
+            {
                 throw new ArgumentException($"열거형의 개수는 0보다 커야 합니다.");
+            }
 
             if (probabilitiesSum == null)
             {
                 probabilitiesSum = 0f;
 
-                foreach (var element in enumerable)
+                foreach (T element in enumerable)
+                {
                     probabilitiesSum += probabilitySelector(element);
+                }
             }
 
-            var randomValue = UnityRandom.value * probabilitiesSum.Value;
+            float randomValue = UnityRandom.value * probabilitiesSum.Value;
 
-            var sum = 0f;
-            var index = -1;
+            float sum = 0f;
+            int index = -1;
 
-            var enumerator = enumerable.GetEnumerator();
+            IEnumerator<T> enumerator = enumerable.GetEnumerator();
 
             while (enumerator.MoveNext())
             {
                 index += 1;
-                var probability = probabilitySelector(enumerator.Current);
+                float probability = probabilitySelector(enumerator.Current);
 
                 sum += probability;
 
                 if (randomValue < sum || randomValue.Approx(sum))
+                {
                     return (enumerator.Current, index);
+                }
             }
 
             return (enumerator.Current, count - 1);
@@ -216,8 +241,10 @@ namespace Hian.Extensions
         /// <param name="action">각 요소에 대해 수행할 작업.</param>
         public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> action)
         {
-            foreach (var element in enumerable)
+            foreach (T element in enumerable)
+            {
                 action(element);
+            }
         }
 
         /// <summary>
@@ -234,24 +261,28 @@ namespace Hian.Extensions
         )
             where U : IComparable<U>
         {
-            var enumerator = enumerable.GetEnumerator();
+            IEnumerator<T> enumerator = enumerable.GetEnumerator();
 
             if (!enumerator.MoveNext())
+            {
                 return (-1, default);
+            }
 
-            var minIndex = 0;
-            var minObj = enumerator.Current;
-            var minValue = expression(minObj);
+            int minIndex = 0;
+            T minObj = enumerator.Current;
+            U minValue = expression(minObj);
 
-            var index = 0;
+            int index = 0;
 
             while (enumerator.MoveNext())
             {
                 index += 1;
-                var otherMinValue = expression(enumerator.Current);
+                U otherMinValue = expression(enumerator.Current);
 
                 if (otherMinValue.CompareTo(minValue) > -1)
+                {
                     continue;
+                }
 
                 minIndex = index;
                 minObj = enumerator.Current;
@@ -275,24 +306,28 @@ namespace Hian.Extensions
         )
             where U : IComparable<U>
         {
-            var enumerator = enumerable.GetEnumerator();
+            IEnumerator<T> enumerator = enumerable.GetEnumerator();
 
             if (!enumerator.MoveNext())
+            {
                 return (-1, default);
+            }
 
-            var maxIndex = 0;
-            var maxObj = enumerator.Current;
-            var maxValue = expression(maxObj);
+            int maxIndex = 0;
+            T maxObj = enumerator.Current;
+            U maxValue = expression(maxObj);
 
-            var index = 0;
+            int index = 0;
 
             while (enumerator.MoveNext())
             {
                 index += 1;
-                var otherMinValue = expression(enumerator.Current);
+                U otherMinValue = expression(enumerator.Current);
 
                 if (otherMinValue.CompareTo(maxValue) < 1)
+                {
                     continue;
+                }
 
                 maxIndex = index;
                 maxObj = enumerator.Current;

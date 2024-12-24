@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hian.Extensions
@@ -16,7 +14,12 @@ namespace Hian.Extensions
         /// <returns>생성된 텍스처.</returns>
         public static Texture2D ToTexture2D(this RenderTexture renderTexture, TextureFormat format)
         {
-            var texture = new Texture2D(renderTexture.width, renderTexture.height, format, false);
+            Texture2D texture = new Texture2D(
+                renderTexture.width,
+                renderTexture.height,
+                format,
+                false
+            );
             renderTexture.WriteToTexture2D(texture);
 
             return texture;
@@ -29,7 +32,7 @@ namespace Hian.Extensions
         /// <param name="texture">렌더 텍스처의 내용을 쓸 텍스처.</param>
         public static void WriteToTexture2D(this RenderTexture renderTexture, Texture2D texture)
         {
-            var oldRenderTexture = RenderTexture.active;
+            RenderTexture oldRenderTexture = RenderTexture.active;
             RenderTexture.active = renderTexture;
 
             texture.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
@@ -45,7 +48,7 @@ namespace Hian.Extensions
         /// <returns>생성된 스프라이트.</returns>
         public static Sprite ToSprite(this RenderTexture renderTexture, TextureFormat format)
         {
-            var texture = renderTexture.ToTexture2D(format);
+            Texture2D texture = renderTexture.ToTexture2D(format);
             return Sprite.Create(
                 texture,
                 new Rect(0f, 0f, texture.width, texture.height),
