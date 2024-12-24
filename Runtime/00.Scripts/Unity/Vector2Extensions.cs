@@ -20,18 +20,15 @@ namespace Hian.Extensions
         /// <exception cref="ArgumentOutOfRangeException">축 인덱스가 0 또는 1이 아닌 경우 발생합니다.</exception>
         public static Vector2 With(this Vector2 vector, int axis, float value)
         {
-            switch (axis)
+            return axis switch
             {
-                case 0:
-                    return vector.WithX(value);
-                case 1:
-                    return vector.WithY(value);
-                default:
-                    throw new ArgumentOutOfRangeException(
-                        "axis",
-                        "축 인덱스는 0 또는 1이어야 합니다."
-                    );
-            }
+                0 => vector.WithX(value),
+                1 => vector.WithY(value),
+                _ => throw new ArgumentOutOfRangeException(
+                    "axis",
+                    "축 인덱스는 0 또는 1이어야 합니다."
+                ),
+            };
         }
 
         /// <summary>
@@ -80,29 +77,40 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="axis">값을 반전할 축의 인덱스 (0: x, 1: y).</param>
         /// <returns>지정된 축의 값이 반전된 새 Vector2.</returns>
-        public static Vector2 WithNegate(this Vector2 vector, int axis) =>
-            vector.With(axis, -vector[axis]);
+        public static Vector2 WithNegate(this Vector2 vector, int axis)
+        {
+            return vector.With(axis, -vector[axis]);
+        }
 
         /// <summary>
         /// x 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x 축의 값이 반전된 새 Vector2.</returns>
-        public static Vector2 WithNegateX(this Vector2 vector) => WithNegate(vector, 0);
+        public static Vector2 WithNegateX(this Vector2 vector)
+        {
+            return WithNegate(vector, 0);
+        }
 
         /// <summary>
         /// y 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>y 축의 값이 반전된 새 Vector2.</returns>
-        public static Vector2 WithNegateY(this Vector2 vector) => WithNegate(vector, 1);
+        public static Vector2 WithNegateY(this Vector2 vector)
+        {
+            return WithNegate(vector, 1);
+        }
 
         /// <summary>
         /// 벡터의 모든 성분을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>모든 성분이 반전된 새 Vector2.</returns>
-        public static Vector2 Negate(this Vector2 vector) => new(-vector.x, -vector.y);
+        public static Vector2 Negate(this Vector2 vector)
+        {
+            return new(-vector.x, -vector.y);
+        }
 
         #endregion
 
@@ -113,16 +121,20 @@ namespace Hian.Extensions
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>가장 큰 성분의 인덱스와 값을 포함하는 튜플.</returns>
-        public static (int index, float value) MaxComponent(this Vector2 vector) =>
-            vector.x >= vector.y ? (0, vector.x) : (1, vector.y);
+        public static (int index, float value) MaxComponent(this Vector2 vector)
+        {
+            return vector.x >= vector.y ? (0, vector.x) : (1, vector.y);
+        }
 
         /// <summary>
         /// 벡터에서 가장 작은 성분의 인덱스와 값을 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>가장 작은 성분의 인덱스와 값을 포함하는 튜플.</returns>
-        public static (int index, float value) MinComponent(this Vector2 vector) =>
-            vector.x <= vector.y ? (0, vector.x) : (1, vector.y);
+        public static (int index, float value) MinComponent(this Vector2 vector)
+        {
+            return vector.x <= vector.y ? (0, vector.x) : (1, vector.y);
+        }
 
         #endregion
 
@@ -162,7 +174,9 @@ namespace Hian.Extensions
         public static Vector2 Clamp(this Vector2 vector, float min, float max)
         {
             if (min > max)
+            {
                 throw new ArgumentException("min은 max보다 클 수 없습니다.");
+            }
 
             return new Vector2(Mathf.Clamp(vector.x, min, max), Mathf.Clamp(vector.y, min, max));
         }
@@ -187,14 +201,20 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="other">나눌 벡터.</param>
         /// <returns>모든 성분이 다른 벡터로 나누어진 새 Vector2.</returns>
-        public static Vector2 Divide(this Vector2 vector, Vector2 other) => vector / other;
+        public static Vector2 Divide(this Vector2 vector, Vector2 other)
+        {
+            return vector / other;
+        }
 
         /// <summary>
         /// 벡터의 모든 성분이 같은지 확인합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>모든 성분이 같으면 true, 그렇지 않으면 false.</returns>
-        public static bool IsUniform(this Vector2 vector) => Approx(vector.x, vector.y);
+        public static bool IsUniform(this Vector2 vector)
+        {
+            return Approx(vector.x, vector.y);
+        }
 
         #endregion
 
@@ -271,7 +291,7 @@ namespace Hian.Extensions
             float sin = Mathf.Sin(angle);
             float x = vector.x - p.x;
             float y = vector.y - p.y;
-            return new Vector2(x * cos - y * sin + p.x, x * sin + y * cos + p.y);
+            return new Vector2((x * cos) - (y * sin) + p.x, (x * sin) + (y * cos) + p.y);
         }
 
         /// <summary>
@@ -356,7 +376,10 @@ namespace Hian.Extensions
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x와 y가 바뀐 새 Vector2.</returns>
-        public static Vector2 GetYX(this Vector2 vector) => new(vector.y, vector.x);
+        public static Vector2 GetYX(this Vector2 vector)
+        {
+            return new(vector.y, vector.x);
+        }
 
         #endregion
 
@@ -381,7 +404,7 @@ namespace Hian.Extensions
         /// <returns>두 Vector2의 외적.</returns>
         public static float Cross(this Vector2 vector, Vector2 other)
         {
-            return vector.x * other.y - vector.y * other.x;
+            return (vector.x * other.y) - (vector.y * other.x);
         }
 
         /// <summary>
@@ -403,7 +426,7 @@ namespace Hian.Extensions
         /// <returns>반사된 Vector2.</returns>
         public static Vector2 Reflect(this Vector2 vector, Vector2 normal)
         {
-            return vector - 2 * Vector2.Dot(vector, normal) * normal;
+            return vector - (2 * Vector2.Dot(vector, normal) * normal);
         }
 
         #endregion
@@ -427,7 +450,7 @@ namespace Hian.Extensions
         // 한 범위에서 다른 범위로 단일 값을 다시 매핑하는 도우미 함수
         private static float Remap(float value, float min1, float max1, float min2, float max2)
         {
-            return min2 + (value - min1) * (max2 - min2) / (max1 - min1);
+            return min2 + ((value - min1) * (max2 - min2) / (max1 - min1));
         }
 
         // 근사 일치 검사를 위한 도우미 함수
@@ -485,17 +508,17 @@ namespace Hian.Extensions
             IEnumerable<Vector2> points
         )
         {
-            var enumerator = points.GetEnumerator();
+            IEnumerator<Vector2> enumerator = points.GetEnumerator();
 
-            var index = -1;
-            var closestIndex = -1;
-            var closestPoint = Vector2.zero;
-            var closestDistance = float.MaxValue;
+            int index = -1;
+            int closestIndex = -1;
+            Vector2 closestPoint = Vector2.zero;
+            float closestDistance = float.MaxValue;
 
             while (enumerator.MoveNext())
             {
                 ++index;
-                var distance = Vector2.Distance(point, enumerator.Current);
+                float distance = Vector2.Distance(point, enumerator.Current);
 
                 if (distance < closestDistance)
                 {
@@ -521,8 +544,8 @@ namespace Hian.Extensions
             Vector2 direction
         )
         {
-            var distance = Vector2.Dot(point - origin, direction);
-            return (origin + direction * distance, distance);
+            float distance = Vector2.Dot(point - origin, direction);
+            return (origin + (direction * distance), distance);
         }
 
         /// <summary>
@@ -538,12 +561,12 @@ namespace Hian.Extensions
             Vector2 end
         )
         {
-            var direction = end - start;
-            var lineMagnitude = direction.magnitude;
+            Vector2 direction = end - start;
+            float lineMagnitude = direction.magnitude;
             direction.Normalize();
 
-            var distance = Mathf.Clamp(Vector2.Dot(point - start, direction), 0f, lineMagnitude);
-            return (start + direction * distance, distance);
+            float distance = Mathf.Clamp(Vector2.Dot(point - start, direction), 0f, lineMagnitude);
+            return (start + (direction * distance), distance);
         }
 
         /// <summary>
@@ -552,9 +575,11 @@ namespace Hian.Extensions
         /// <param name="direction">대상 방향 벡터.</param>
         /// <param name="angle">편향시킬 각도.</param>
         /// <returns>편향된 방향 벡터.</returns>
-        public static Vector2 RandomDeflected(this Vector2 direction, float angle) =>
-            Quaternion.AngleAxis(Random.value * angle.WithRandomSign(), Vector3.forward)
-            * direction;
+        public static Vector2 RandomDeflected(this Vector2 direction, float angle)
+        {
+            return Quaternion.AngleAxis(Random.value * angle.WithRandomSign(), Vector3.forward)
+                * direction;
+        }
 
         /// <summary>
         /// x 축에 값을 삽입하고 벡터를 3차원으로 확장합니다.
@@ -562,8 +587,10 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="x">x 축에 삽입할 값.</param>
         /// <returns>3차원 벡터.</returns>
-        public static Vector3 InsertX(this Vector2 vector, float x = 0) =>
-            new(x, vector.x, vector.y);
+        public static Vector3 InsertX(this Vector2 vector, float x = 0)
+        {
+            return new(x, vector.x, vector.y);
+        }
 
         /// <summary>
         /// y 축에 값을 삽입하고 벡터를 3차원으로 확장합니다.
@@ -571,8 +598,10 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="y">y 축에 삽입할 값.</param>
         /// <returns>3차원 벡터.</returns>
-        public static Vector3 InsertY(this Vector2 vector, float y = 0) =>
-            new(vector.x, y, vector.y);
+        public static Vector3 InsertY(this Vector2 vector, float y = 0)
+        {
+            return new(vector.x, y, vector.y);
+        }
 
         /// <summary>
         /// z 축에 값을 삽입하고 벡터를 3차원으로 확장합니다.
@@ -580,8 +609,10 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="z">z 축에 삽입할 값.</param>
         /// <returns>3차원 벡터.</returns>
-        public static Vector3 InsertZ(this Vector2 vector, float z = 0) =>
-            new(vector.x, vector.y, z);
+        public static Vector3 InsertZ(this Vector2 vector, float z = 0)
+        {
+            return new(vector.x, vector.y, z);
+        }
 
         #endregion
     }

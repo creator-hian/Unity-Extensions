@@ -12,16 +12,26 @@ All notable changes to this project will be documented in this file.
   - **Patch**: 하위 호환성 있는 버그 수정
 - **최신 버전이 상단에, 이전 버전이 하단에 기록됩니다.**
 
-## [0.3.0] - 2024-12-19
+## [0.4.0] - 2024-12-19
 
 ### Added
+
+- `LocaleExtensions`: `Locale` 클래스에 대한 확장 메서드 추가 (로케일 설정, 로케일 가져오기)
+
+## [0.3.0] - 2024-12-19
+
+<!-- markdownlint-disable MD024 -->
+### Added
+<!-- markdownlint-enable MD024 -->
 
 - `AsyncOperationExtensions`: `AsyncOperation` 클래스에 대한 확장 메서드 추가 (`AsyncOperation`을 `Task`로 변환)
 - `TaskExtensions`: `Task` 클래스에 대한 확장 메서드 추가 (`Task`에 취소 토큰 적용)
 
 ## [0.2.0] - 2024-12-19
 
+<!-- markdownlint-disable MD024 -->
 ### Added
+<!-- markdownlint-enable MD024 -->  
 
 - `LayerMaskExtensions`: `LayerMask` 클래스에 대한 확장 메서드 추가 (레이어 마스크에서 레이어 제거, 레이어 마스크에서 레이어 제거)
 - `DateTimeExtensions`: `DateTime` 클래스에 대한 확장 메서드 추가 (날짜 비교, 날짜 범위 매핑, 날짜 범위 검사)
@@ -30,7 +40,9 @@ All notable changes to this project will be documented in this file.
 
 ## [0.1.0] - 2024-12-19
 
+<!-- markdownlint-disable MD024 -->
 ### Added
+<!-- markdownlint-enable MD024 -->
 
 - `ComponentExtensions`: `Component` 클래스에 대한 확장 메서드 추가 (컴포넌트 가져오기/추가, 자식/부모에서 검색)
 - `CameraExtensions`: `Camera` 클래스에 대한 확장 메서드 추가 (배경색 설정, 렌즈 쉬프트, 픽셀 사각형 설정 등)
@@ -50,13 +62,11 @@ All notable changes to this project will be documented in this file.
 - `SceneExtensions`: `Scene` 클래스에 대한 확장 메서드 추가 (Scene에서 컴포넌트를 가진 게임 오브젝트를 찾고, Scene에서 컴포넌트를 가진 게임 오브젝트들을 찾는 기능을 제공합니다.)
 - `TransformExtensions`: `Transform` 클래스에 대한 확장 메서드 추가 (모든 자식 가져오기, 임의의 자식 가져오기, 자식 추가, 모든 자식 제거, 첫 번째 자식 제거, 마지막 자식 제거, Transform을 RectTransform 타입으로 캐스팅)
 
-### Changed
-
-### Fixed
-
 ## [0.0.1] - 2024-02-16
 
+<!-- markdownlint-disable MD024 -->
 ### Added
+<!-- markdownlint-enable MD024 -->
 
 - `Vector2`, `Vector3`, `Vector4`, `Vector2Int`, `Vector3Int`  구조체에 대한 확장 메서드 추가
 - `Color`, `Color32` 구조체에 대한 확장 메서드 추가
@@ -64,7 +74,3 @@ All notable changes to this project will be documented in this file.
 - `ColorExtensions`: `Color` 구조체에 대한 확장 메서드 추가 (색상 채널 설정, 보간 등)
 - `Color32Extensions`: `Color32` 구조체에 대한 확장 메서드 추가 (색상 채널 설정, 보간 등)
 -
-
-### Changed
-
-### Fixed

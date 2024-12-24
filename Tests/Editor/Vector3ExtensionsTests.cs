@@ -16,10 +16,10 @@ public class Vector3ExtensionsTests
     public void WithX_WhenCalled_UpdatesXValueOnly()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithX(2f);
+        Vector3 result = vector.WithX(2f);
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -34,10 +34,10 @@ public class Vector3ExtensionsTests
     public void WithY_WhenCalled_UpdatesYValueOnly()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithY(2f);
+        Vector3 result = vector.WithY(2f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -52,10 +52,10 @@ public class Vector3ExtensionsTests
     public void WithZ_WhenCalled_UpdatesZValueOnly()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithZ(2f);
+        Vector3 result = vector.WithZ(2f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -70,10 +70,10 @@ public class Vector3ExtensionsTests
     public void WithXY_WhenCalled_UpdatesXAndYValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithXY(2f, 3f);
+        Vector3 result = vector.WithXY(2f, 3f);
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -88,10 +88,10 @@ public class Vector3ExtensionsTests
     public void WithXY_WhenCalledWithVector2_UpdatesXAndYValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithXY(new Vector2(2f, 3f));
+        Vector3 result = vector.WithXY(new Vector2(2f, 3f));
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -106,10 +106,10 @@ public class Vector3ExtensionsTests
     public void WithXZ_WhenCalled_UpdatesXAndZValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithXZ(2f, 3f);
+        Vector3 result = vector.WithXZ(2f, 3f);
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -124,10 +124,10 @@ public class Vector3ExtensionsTests
     public void WithXZ_WhenCalledWithVector2_UpdatesXAndZValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithXZ(new Vector2(2f, 3f));
+        Vector3 result = vector.WithXZ(new Vector2(2f, 3f));
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -142,10 +142,10 @@ public class Vector3ExtensionsTests
     public void WithYZ_WhenCalled_UpdatesYAndZValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithYZ(2f, 3f);
+        Vector3 result = vector.WithYZ(2f, 3f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -160,10 +160,10 @@ public class Vector3ExtensionsTests
     public void WithYZ_WhenCalledWithVector2_UpdatesYAndZValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.WithYZ(new Vector2(2f, 3f));
+        Vector3 result = vector.WithYZ(new Vector2(2f, 3f));
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -182,10 +182,10 @@ public class Vector3ExtensionsTests
     public void WithNegateX_WhenCalled_NegatesXValueOnly()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.WithNegateX();
+        Vector3 result = vector.WithNegateX();
 
         // Assert
         Assert.AreEqual(-1f, result.x);
@@ -200,10 +200,10 @@ public class Vector3ExtensionsTests
     public void WithNegateY_WhenCalled_NegatesYValueOnly()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.WithNegateY();
+        Vector3 result = vector.WithNegateY();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -218,10 +218,10 @@ public class Vector3ExtensionsTests
     public void WithNegateZ_WhenCalled_NegatesZValueOnly()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.WithNegateZ();
+        Vector3 result = vector.WithNegateZ();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -236,10 +236,10 @@ public class Vector3ExtensionsTests
     public void WithNegateXY_WhenCalled_NegatesXAndYValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.WithNegateXY();
+        Vector3 result = vector.WithNegateXY();
 
         // Assert
         Assert.AreEqual(-1f, result.x);
@@ -254,10 +254,10 @@ public class Vector3ExtensionsTests
     public void WithNegateXZ_WhenCalled_NegatesXAndZValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.WithNegateXZ();
+        Vector3 result = vector.WithNegateXZ();
 
         // Assert
         Assert.AreEqual(-1f, result.x);
@@ -272,10 +272,10 @@ public class Vector3ExtensionsTests
     public void WithNegateYZ_WhenCalled_NegatesYAndZValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.WithNegateYZ();
+        Vector3 result = vector.WithNegateYZ();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -290,10 +290,10 @@ public class Vector3ExtensionsTests
     public void Negate_WhenCalled_NegatesAllValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.Negate();
+        Vector3 result = vector.Negate();
 
         // Assert
         Assert.AreEqual(-1f, result.x);
@@ -312,10 +312,10 @@ public class Vector3ExtensionsTests
     public void GetXY_WhenCalled_ReturnsVector2WithXAndYValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetXY();
+        Vector2 result = vector.GetXY();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -329,10 +329,10 @@ public class Vector3ExtensionsTests
     public void GetXZ_WhenCalled_ReturnsVector2WithXAndZValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetXZ();
+        Vector2 result = vector.GetXZ();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -346,10 +346,10 @@ public class Vector3ExtensionsTests
     public void GetYX_WhenCalled_ReturnsVector2WithYAndXValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetYX();
+        Vector2 result = vector.GetYX();
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -363,10 +363,10 @@ public class Vector3ExtensionsTests
     public void GetYZ_WhenCalled_ReturnsVector2WithYAndZValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetYZ();
+        Vector2 result = vector.GetYZ();
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -380,10 +380,10 @@ public class Vector3ExtensionsTests
     public void GetZX_WhenCalled_ReturnsVector2WithZAndXValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetZX();
+        Vector2 result = vector.GetZX();
 
         // Assert
         Assert.AreEqual(3f, result.x);
@@ -397,10 +397,10 @@ public class Vector3ExtensionsTests
     public void GetZY_WhenCalled_ReturnsVector2WithZAndYValues()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetZY();
+        Vector2 result = vector.GetZY();
 
         // Assert
         Assert.AreEqual(3f, result.x);
@@ -414,10 +414,10 @@ public class Vector3ExtensionsTests
     public void GetXZY_WhenCalled_ReturnsVector3WithXZYOrder()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetXZY();
+        Vector3 result = vector.GetXZY();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -432,10 +432,10 @@ public class Vector3ExtensionsTests
     public void GetYXZ_WhenCalled_ReturnsVector3WithYXZOrder()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetYXZ();
+        Vector3 result = vector.GetYXZ();
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -450,10 +450,10 @@ public class Vector3ExtensionsTests
     public void GetYZX_WhenCalled_ReturnsVector3WithYZXOrder()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetYZX();
+        Vector3 result = vector.GetYZX();
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -468,10 +468,10 @@ public class Vector3ExtensionsTests
     public void GetZXY_WhenCalled_ReturnsVector3WithZXYOrder()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetZXY();
+        Vector3 result = vector.GetZXY();
 
         // Assert
         Assert.AreEqual(3f, result.x);
@@ -486,10 +486,10 @@ public class Vector3ExtensionsTests
     public void GetZYX_WhenCalled_ReturnsVector3WithZYXOrder()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.GetZYX();
+        Vector3 result = vector.GetZYX();
 
         // Assert
         Assert.AreEqual(3f, result.x);
@@ -508,10 +508,10 @@ public class Vector3ExtensionsTests
     public void InsertX_WhenCalled_ReturnsVector4WithInsertedX()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.InsertX(4f);
+        Vector4 result = vector.InsertX(4f);
 
         // Assert
         Assert.AreEqual(4f, result.x);
@@ -527,10 +527,10 @@ public class Vector3ExtensionsTests
     public void InsertY_WhenCalled_ReturnsVector4WithInsertedY()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.InsertY(4f);
+        Vector4 result = vector.InsertY(4f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -546,10 +546,10 @@ public class Vector3ExtensionsTests
     public void InsertZ_WhenCalled_ReturnsVector4WithInsertedZ()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.InsertZ(4f);
+        Vector4 result = vector.InsertZ(4f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -565,10 +565,10 @@ public class Vector3ExtensionsTests
     public void InsertW_WhenCalled_ReturnsVector4WithInsertedW()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.InsertW(4f);
+        Vector4 result = vector.InsertW(4f);
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -588,10 +588,10 @@ public class Vector3ExtensionsTests
     public void MaxComponent_WhenCalled_ReturnsIndexOfMaxValue()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var (index, value) = vector.MaxComponent();
+        (int index, float value) = vector.MaxComponent();
 
         // Assert
         Assert.AreEqual(2, index);
@@ -605,10 +605,10 @@ public class Vector3ExtensionsTests
     public void MinComponent_WhenCalled_ReturnsIndexOfMinValue()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var (index, value) = vector.MinComponent();
+        (int index, float value) = vector.MinComponent();
 
         // Assert
         Assert.AreEqual(0, index);
@@ -626,10 +626,10 @@ public class Vector3ExtensionsTests
     public void Remap_WhenCalled_RemapsAllComponentsToNewRange()
     {
         // Arrange
-        var vector = new Vector3(0f, 5f, 10f);
+        Vector3 vector = new Vector3(0f, 5f, 10f);
 
         // Act
-        var result = vector.Remap(0f, 10f, 0f, 100f);
+        Vector3 result = vector.Remap(0f, 10f, 0f, 100f);
 
         // Assert
         Assert.AreEqual(0f, result.x);
@@ -648,10 +648,10 @@ public class Vector3ExtensionsTests
     public void Abs_WhenCalled_ReturnsAbsoluteValuesOfAllComponents()
     {
         // Arrange
-        var vector = new Vector3(-1f, 2f, -3f);
+        Vector3 vector = new Vector3(-1f, 2f, -3f);
 
         // Act
-        var result = vector.Abs();
+        Vector3 result = vector.Abs();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -666,10 +666,10 @@ public class Vector3ExtensionsTests
     public void Clamp_WhenCalled_ClampsAllComponentsToSpecifiedRange()
     {
         // Arrange
-        var vector = new Vector3(-1f, 5f, 11f);
+        Vector3 vector = new Vector3(-1f, 5f, 11f);
 
         // Act
-        var result = vector.Clamp(0f, 10f);
+        Vector3 result = vector.Clamp(0f, 10f);
 
         // Assert
         Assert.AreEqual(0f, result.x);
@@ -684,10 +684,10 @@ public class Vector3ExtensionsTests
     public void Clamp01_WhenCalled_ClampsAllComponentsBetween0And1()
     {
         // Arrange
-        var vector = new Vector3(-1f, 0.5f, 2f);
+        Vector3 vector = new Vector3(-1f, 0.5f, 2f);
 
         // Act
-        var result = vector.Clamp01();
+        Vector3 result = vector.Clamp01();
 
         // Assert
         Assert.AreEqual(0f, result.x);
@@ -702,11 +702,11 @@ public class Vector3ExtensionsTests
     public void Divide_WhenCalled_DividesAllComponentsByOtherVector()
     {
         // Arrange
-        var vector = new Vector3(4f, 6f, 8f);
-        var other = new Vector3(2f, 3f, 4f);
+        Vector3 vector = new Vector3(4f, 6f, 8f);
+        Vector3 other = new Vector3(2f, 3f, 4f);
 
         // Act
-        var result = vector.Divide(other);
+        Vector3 result = vector.Divide(other);
 
         // Assert
         Assert.AreEqual(2f, result.x);
@@ -721,10 +721,10 @@ public class Vector3ExtensionsTests
     public void IsUniform_WhenCalled_ReturnsTrueIfAllComponentsAreEqual()
     {
         // Arrange
-        var vector = new Vector3(1f, 1f, 1f);
+        Vector3 vector = new Vector3(1f, 1f, 1f);
 
         // Act
-        var result = vector.IsUniform();
+        bool result = vector.IsUniform();
 
         // Assert
         Assert.IsTrue(result);
@@ -737,10 +737,10 @@ public class Vector3ExtensionsTests
     public void IsUniform_WhenCalled_ReturnsFalseIfAllComponentsAreNotEqual()
     {
         // Arrange
-        var vector = new Vector3(1f, 2f, 3f);
+        Vector3 vector = new Vector3(1f, 2f, 3f);
 
         // Act
-        var result = vector.IsUniform();
+        bool result = vector.IsUniform();
 
         // Assert
         Assert.IsFalse(result);
@@ -779,8 +779,8 @@ public class Vector3ExtensionsTests
     public void GetClosestPoint_WhenCalled_ReturnsClosestPoint()
     {
         // Arrange
-        var point = new Vector3(0f, 0f, 0f);
-        var points = new[]
+        Vector3 point = new Vector3(0f, 0f, 0f);
+        Vector3[] points = new[]
         {
             new Vector3(1f, 0f, 0f),
             new Vector3(0f, 2f, 0f),
@@ -788,7 +788,7 @@ public class Vector3ExtensionsTests
         };
 
         // Act
-        var (closestPoint, index) = point.GetClosestPoint(points);
+        (Vector3 closestPoint, int index) = point.GetClosestPoint(points);
 
         // Assert
         Assert.AreEqual(new Vector3(1f, 0f, 0f), closestPoint);
@@ -806,12 +806,12 @@ public class Vector3ExtensionsTests
     public void GetClosestPointOnRay_WhenCalled_ReturnsClosestPointOnRay()
     {
         // Arrange
-        var point = new Vector3(0f, 0f, 0f);
-        var origin = new Vector3(1f, 0f, 0f);
-        var direction = new Vector3(0f, 1f, 0f);
+        Vector3 point = new Vector3(0f, 0f, 0f);
+        Vector3 origin = new Vector3(1f, 0f, 0f);
+        Vector3 direction = new Vector3(0f, 1f, 0f);
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnRay(origin, direction);
+        (Vector3 closestPoint, float distance) = point.GetClosestPointOnRay(origin, direction);
 
         // Assert
         Assert.AreEqual(new Vector3(1f, 0f, 0f), closestPoint);
@@ -825,11 +825,11 @@ public class Vector3ExtensionsTests
     public void GetClosestPointOnRay_WhenCalledWithRay_ReturnsClosestPointOnRay()
     {
         // Arrange
-        var point = new Vector3(0f, 0f, 0f);
-        var ray = new Ray(new Vector3(1f, 0f, 0f), new Vector3(0f, 1f, 0f));
+        Vector3 point = new Vector3(0f, 0f, 0f);
+        Ray ray = new Ray(new Vector3(1f, 0f, 0f), new Vector3(0f, 1f, 0f));
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnRay(ray);
+        (Vector3 closestPoint, float distance) = point.GetClosestPointOnRay(ray);
 
         // Assert
         Assert.AreEqual(new Vector3(1f, 0f, 0f), closestPoint);
@@ -847,12 +847,12 @@ public class Vector3ExtensionsTests
     public void GetClosestPointOnSegment_WhenCalled_ReturnsClosestPointOnSegment()
     {
         // Arrange
-        var point = new Vector3(0f, 0f, 0f);
-        var start = new Vector3(1f, 0f, 0f);
-        var end = new Vector3(1f, 2f, 0f);
+        Vector3 point = new Vector3(0f, 0f, 0f);
+        Vector3 start = new Vector3(1f, 0f, 0f);
+        Vector3 end = new Vector3(1f, 2f, 0f);
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnSegment(start, end);
+        (Vector3 closestPoint, float distance) = point.GetClosestPointOnSegment(start, end);
 
         // Assert
         Assert.AreEqual(new Vector3(1f, 0f, 0f), closestPoint);
@@ -863,12 +863,12 @@ public class Vector3ExtensionsTests
     public void GetClosestPointOnRay_WhenClosestPointIsOnRay_ReturnsCorrectPointAndDistance()
     {
         // Arrange
-        var point = new Vector3(1f, 1f, 0f);
-        var origin = new Vector3(1f, 0f, 0f);
-        var direction = new Vector3(0f, 1f, 0f);
+        Vector3 point = new Vector3(1f, 1f, 0f);
+        Vector3 origin = new Vector3(1f, 0f, 0f);
+        Vector3 direction = new Vector3(0f, 1f, 0f);
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnRay(origin, direction);
+        (Vector3 closestPoint, float distance) = point.GetClosestPointOnRay(origin, direction);
 
         // Assert
         Assert.AreEqual(new Vector3(1f, 1f, 0f), closestPoint);
@@ -879,12 +879,12 @@ public class Vector3ExtensionsTests
     public void GetClosestPointOnRay_WhenClosestPointIsBeforeOrigin_ReturnsOriginAndCorrectDistance()
     {
         // Arrange
-        var point = new Vector3(-1f, 0f, 0f);
-        var origin = new Vector3(0f, 0f, 0f);
-        var direction = new Vector3(1f, 0f, 0f); // 정규화된 방향
+        Vector3 point = new Vector3(-1f, 0f, 0f);
+        Vector3 origin = new Vector3(0f, 0f, 0f);
+        Vector3 direction = new Vector3(1f, 0f, 0f); // 정규화된 방향
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnRay(origin, direction);
+        (Vector3 closestPoint, float distance) = point.GetClosestPointOnRay(origin, direction);
 
         // Assert
         Assert.AreEqual(origin, closestPoint);
@@ -895,12 +895,12 @@ public class Vector3ExtensionsTests
     public void GetClosestPointOnSegment_WhenClosestPointIsMiddle_ReturnsCorrectPointAndDistance()
     {
         // Arrange
-        var point = new Vector3(1f, 1f, 0f);
-        var start = new Vector3(0f, 0f, 0f);
-        var end = new Vector3(2f, 0f, 0f);
+        Vector3 point = new Vector3(1f, 1f, 0f);
+        Vector3 start = new Vector3(0f, 0f, 0f);
+        Vector3 end = new Vector3(2f, 0f, 0f);
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnSegment(start, end);
+        (Vector3 closestPoint, float distance) = point.GetClosestPointOnSegment(start, end);
 
         // Assert
         Assert.AreEqual(new Vector3(1f, 0f, 0f), closestPoint);
@@ -911,12 +911,12 @@ public class Vector3ExtensionsTests
     public void GetClosestPointOnSegment_WhenClosestPointIsStart_ReturnsStartAndCorrectDistance()
     {
         // Arrange
-        var point = new Vector3(-1f, 0f, 0f);
-        var start = new Vector3(0f, 0f, 0f);
-        var end = new Vector3(2f, 0f, 0f);
+        Vector3 point = new Vector3(-1f, 0f, 0f);
+        Vector3 start = new Vector3(0f, 0f, 0f);
+        Vector3 end = new Vector3(2f, 0f, 0f);
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnSegment(start, end);
+        (Vector3 closestPoint, float distance) = point.GetClosestPointOnSegment(start, end);
 
         // Assert
         Assert.AreEqual(start, closestPoint);
@@ -927,12 +927,12 @@ public class Vector3ExtensionsTests
     public void GetClosestPointOnSegment_WhenClosestPointIsEnd_ReturnsEndAndCorrectDistance()
     {
         // Arrange
-        var point = new Vector3(3f, 0f, 0f);
-        var start = new Vector3(0f, 0f, 0f);
-        var end = new Vector3(2f, 0f, 0f);
+        Vector3 point = new Vector3(3f, 0f, 0f);
+        Vector3 start = new Vector3(0f, 0f, 0f);
+        Vector3 end = new Vector3(2f, 0f, 0f);
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnSegment(start, end);
+        (Vector3 closestPoint, float distance) = point.GetClosestPointOnSegment(start, end);
 
         // Assert
         Assert.AreEqual(end, closestPoint);
@@ -950,11 +950,11 @@ public class Vector3ExtensionsTests
     public void RandomDeflected_WhenCalled_ReturnsDeflectedDirectionVector()
     {
         // Arrange
-        var direction = new Vector3(1f, 0f, 0f);
-        var angle = 90f;
+        Vector3 direction = new Vector3(1f, 0f, 0f);
+        float angle = 90f;
 
         // Act
-        var result = direction.RandomDeflected(angle);
+        Vector3 result = direction.RandomDeflected(angle);
 
         // Assert
         Assert.AreEqual(direction.magnitude, result.magnitude, FloatTolerance);
@@ -967,12 +967,12 @@ public class Vector3ExtensionsTests
     public void RandomDeflected_WhenCalledWithUpAxis_ReturnsDeflectedDirectionVector()
     {
         // Arrange
-        var direction = new Vector3(1f, 0f, 0f);
-        var angle = 90f;
-        var up = new Vector3(0f, 0f, 1f);
+        Vector3 direction = new Vector3(1f, 0f, 0f);
+        float angle = 90f;
+        Vector3 up = new Vector3(0f, 0f, 1f);
 
         // Act
-        var result = direction.RandomDeflected(angle, up);
+        Vector3 result = direction.RandomDeflected(angle, up);
 
         // Assert
         Assert.AreEqual(direction.magnitude, result.magnitude, FloatTolerance);
@@ -985,12 +985,12 @@ public class Vector3ExtensionsTests
     public void RandomDeflected_WhenCalledWithXYAngles_ReturnsDeflectedDirectionVector()
     {
         // Arrange
-        var direction = new Vector3(1f, 0f, 0f);
-        var angleX = 90f;
-        var angleY = 45f;
+        Vector3 direction = new Vector3(1f, 0f, 0f);
+        float angleX = 90f;
+        float angleY = 45f;
 
         // Act
-        var result = direction.RandomDeflected(angleX, angleY);
+        Vector3 result = direction.RandomDeflected(angleX, angleY);
 
         // Assert
         Assert.AreEqual(direction.magnitude, result.magnitude, FloatTolerance);
@@ -1003,13 +1003,13 @@ public class Vector3ExtensionsTests
     public void RandomDeflected_WhenCalledWithXYAnglesAndUpAxis_ReturnsDeflectedDirectionVector()
     {
         // Arrange
-        var direction = new Vector3(1f, 0f, 0f);
-        var angleX = 90f;
-        var angleY = 45f;
-        var up = new Vector3(0f, 0f, 1f);
+        Vector3 direction = new Vector3(1f, 0f, 0f);
+        float angleX = 90f;
+        float angleY = 45f;
+        Vector3 up = new Vector3(0f, 0f, 1f);
 
         // Act
-        var result = direction.RandomDeflected(angleX, angleY, up);
+        Vector3 result = direction.RandomDeflected(angleX, angleY, up);
 
         // Assert
         Assert.AreEqual(direction.magnitude, result.magnitude, FloatTolerance);
@@ -1022,11 +1022,11 @@ public class Vector3ExtensionsTests
     public void RandomDeflected_WhenCalledWithVector2Angles_ReturnsDeflectedDirectionVector()
     {
         // Arrange
-        var direction = new Vector3(1f, 0f, 0f);
-        var angles = new Vector2(90f, 45f);
+        Vector3 direction = new Vector3(1f, 0f, 0f);
+        Vector2 angles = new Vector2(90f, 45f);
 
         // Act
-        var result = direction.RandomDeflected(angles);
+        Vector3 result = direction.RandomDeflected(angles);
 
         // Assert
         Assert.AreEqual(direction.magnitude, result.magnitude, FloatTolerance);
@@ -1039,12 +1039,12 @@ public class Vector3ExtensionsTests
     public void RandomDeflected_WhenCalledWithVector2AnglesAndUpAxis_ReturnsDeflectedDirectionVector()
     {
         // Arrange
-        var direction = new Vector3(1f, 0f, 0f);
-        var angles = new Vector2(90f, 45f);
-        var up = new Vector3(0f, 0f, 1f);
+        Vector3 direction = new Vector3(1f, 0f, 0f);
+        Vector2 angles = new Vector2(90f, 45f);
+        Vector3 up = new Vector3(0f, 0f, 1f);
 
         // Act
-        var result = direction.RandomDeflected(angles, up);
+        Vector3 result = direction.RandomDeflected(angles, up);
 
         // Assert
         Assert.AreEqual(direction.magnitude, result.magnitude, FloatTolerance);

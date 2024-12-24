@@ -15,7 +15,7 @@ namespace Hian.Extensions
         /// <returns>업데이트된 레이어 마스크.</returns>
         public static LayerMask WithLayers(this LayerMask layerMask, params int[] layers)
         {
-            foreach (var layer in layers)
+            foreach (int layer in layers)
             {
                 layerMask |= 1 << layer;
             }
@@ -31,9 +31,9 @@ namespace Hian.Extensions
         /// <returns>업데이트된 레이어 마스크.</returns>
         public static LayerMask WithLayers(this LayerMask layerMask, params string[] layerNames)
         {
-            foreach (var name in layerNames)
+            foreach (string name in layerNames)
             {
-                var layer = LayerMask.NameToLayer(name);
+                int layer = LayerMask.NameToLayer(name);
                 layerMask |= 1 << layer;
             }
 
@@ -48,7 +48,7 @@ namespace Hian.Extensions
         /// <returns>업데이트된 레이어 마스크.</returns>
         public static LayerMask WithoutLayers(this LayerMask layerMask, params int[] layers)
         {
-            foreach (var layer in layers)
+            foreach (int layer in layers)
             {
                 layerMask &= ~(1 << layer);
             }
@@ -64,9 +64,9 @@ namespace Hian.Extensions
         /// <returns>업데이트된 레이어 마스크.</returns>
         public static LayerMask WithoutLayers(this LayerMask layerMask, params string[] layerNames)
         {
-            foreach (var name in layerNames)
+            foreach (string name in layerNames)
             {
-                var layer = LayerMask.NameToLayer(name);
+                int layer = LayerMask.NameToLayer(name);
                 layerMask &= ~(1 << layer);
             }
 

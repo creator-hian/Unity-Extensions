@@ -16,7 +16,7 @@ namespace Hian.Extensions
         /// <returns>오늘의 요일에 대한 축약된 이름.</returns>
         public static string GetTodayAbbreviatedDayName(string culture = DefaultCulture)
         {
-            var cultureInfo = GetCultureInfo(culture);
+            CultureInfo cultureInfo = GetCultureInfo(culture);
             return DateTime.Today.ToString("ddd", cultureInfo);
         }
 
@@ -28,7 +28,7 @@ namespace Hian.Extensions
         /// <returns>오늘의 요일에 대한 전체 이름.</returns>
         public static string GetTodayDayName(string culture = DefaultCulture)
         {
-            var cultureInfo = GetCultureInfo(culture);
+            CultureInfo cultureInfo = GetCultureInfo(culture);
             return DateTime.Today.ToString("dddd", cultureInfo);
         }
 
@@ -41,10 +41,14 @@ namespace Hian.Extensions
         public static bool IsAbbreviatedDayName(string comparison, string culture = DefaultCulture)
         {
             if (string.IsNullOrEmpty(comparison))
+            {
                 return false;
+            }
 
-            var cultureInfo = GetCultureInfo(culture);
-            var dayNames = new List<string>(cultureInfo.DateTimeFormat.AbbreviatedDayNames);
+            CultureInfo cultureInfo = GetCultureInfo(culture);
+            List<string> dayNames = new List<string>(
+                cultureInfo.DateTimeFormat.AbbreviatedDayNames
+            );
 
             return dayNames.Exists(name =>
                 name.Equals(comparison, StringComparison.OrdinalIgnoreCase)
@@ -60,10 +64,12 @@ namespace Hian.Extensions
         public static bool IsDayName(string comparison, string culture = DefaultCulture)
         {
             if (string.IsNullOrEmpty(comparison))
+            {
                 return false;
+            }
 
-            var cultureInfo = GetCultureInfo(culture);
-            var dayNames = new List<string>(cultureInfo.DateTimeFormat.DayNames);
+            CultureInfo cultureInfo = GetCultureInfo(culture);
+            List<string> dayNames = new List<string>(cultureInfo.DateTimeFormat.DayNames);
 
             return dayNames.Exists(name =>
                 name.Equals(comparison, StringComparison.OrdinalIgnoreCase)

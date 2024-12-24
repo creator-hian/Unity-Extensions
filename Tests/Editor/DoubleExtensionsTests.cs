@@ -30,7 +30,7 @@ public class DoubleExtensionsTests
         double value2 = 1.0000000000000002;
 
         // Act
-        bool result = value1.Approx(value2);
+        _ = value1.Approx(value2);
 
         // Assert
         Assert.That(value1, Is.EqualTo(value2).Within(DoubleTolerance));
@@ -60,6 +60,6 @@ public class DoubleExtensionsTests
         double result = value.WithRandomSign();
 
         // Assert
-        Assert.IsTrue(result == 1.0 || result == -1.0);
+        Assert.IsTrue(result is 1.0 or (-1.0));
     }
 }

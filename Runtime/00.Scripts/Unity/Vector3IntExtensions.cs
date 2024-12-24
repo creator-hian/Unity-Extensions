@@ -17,20 +17,16 @@ namespace Hian.Extensions
         /// <exception cref="ArgumentOutOfRangeException">축 인덱스가 0, 1, 2가 아닌 경우 발생합니다.</exception>
         public static Vector3Int With(this Vector3Int vector, int axis, int value)
         {
-            switch (axis)
+            return axis switch
             {
-                case 0:
-                    return vector.WithX(value);
-                case 1:
-                    return vector.WithY(value);
-                case 2:
-                    return vector.WithZ(value);
-                default:
-                    throw new ArgumentOutOfRangeException(
-                        "axis",
-                        "축 인덱스는 0, 1, 2 중 하나여야 합니다."
-                    );
-            }
+                0 => vector.WithX(value),
+                1 => vector.WithY(value),
+                2 => vector.WithZ(value),
+                _ => throw new ArgumentOutOfRangeException(
+                    "axis",
+                    "축 인덱스는 0, 1, 2 중 하나여야 합니다."
+                ),
+            };
         }
 
         /// <summary>
@@ -144,29 +140,40 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="axis">값을 반전할 축의 인덱스 (0: x, 1: y, 2: z).</param>
         /// <returns>지정된 축의 값이 반전된 새 Vector3Int.</returns>
-        public static Vector3Int WithNegate(this Vector3Int vector, int axis) =>
-            vector.With(axis, -vector[axis]);
+        public static Vector3Int WithNegate(this Vector3Int vector, int axis)
+        {
+            return vector.With(axis, -vector[axis]);
+        }
 
         /// <summary>
         /// x 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x 축의 값이 반전된 새 Vector3Int.</returns>
-        public static Vector3Int WithNegateX(this Vector3Int vector) => WithNegate(vector, 0);
+        public static Vector3Int WithNegateX(this Vector3Int vector)
+        {
+            return WithNegate(vector, 0);
+        }
 
         /// <summary>
         /// y 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>y 축의 값이 반전된 새 Vector3Int.</returns>
-        public static Vector3Int WithNegateY(this Vector3Int vector) => WithNegate(vector, 1);
+        public static Vector3Int WithNegateY(this Vector3Int vector)
+        {
+            return WithNegate(vector, 1);
+        }
 
         /// <summary>
         /// z 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>z 축의 값이 반전된 새 Vector3Int.</returns>
-        public static Vector3Int WithNegateZ(this Vector3Int vector) => WithNegate(vector, 2);
+        public static Vector3Int WithNegateZ(this Vector3Int vector)
+        {
+            return WithNegate(vector, 2);
+        }
 
         /// <summary>
         /// 지정된 두 축의 값을 반전합니다.
@@ -187,29 +194,40 @@ namespace Hian.Extensions
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x, y 축의 값이 반전된 새 Vector3Int.</returns>
-        public static Vector3Int WithNegateXY(this Vector3Int vector) => WithNegate(vector, 0, 1);
+        public static Vector3Int WithNegateXY(this Vector3Int vector)
+        {
+            return WithNegate(vector, 0, 1);
+        }
 
         /// <summary>
         /// x, z 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x, z 축의 값이 반전된 새 Vector3Int.</returns>
-        public static Vector3Int WithNegateXZ(this Vector3Int vector) => WithNegate(vector, 0, 2);
+        public static Vector3Int WithNegateXZ(this Vector3Int vector)
+        {
+            return WithNegate(vector, 0, 2);
+        }
 
         /// <summary>
         /// y, z 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>y, z 축의 값이 반전된 새 Vector3Int.</returns>
-        public static Vector3Int WithNegateYZ(this Vector3Int vector) => WithNegate(vector, 1, 2);
+        public static Vector3Int WithNegateYZ(this Vector3Int vector)
+        {
+            return WithNegate(vector, 1, 2);
+        }
 
         /// <summary>
         /// 벡터의 모든 성분을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>모든 성분이 반전된 새 Vector3Int.</returns>
-        public static Vector3Int Negate(this Vector3Int vector) =>
-            new(-vector.x, -vector.y, -vector.z);
+        public static Vector3Int Negate(this Vector3Int vector)
+        {
+            return new(-vector.x, -vector.y, -vector.z);
+        }
 
         /// <summary>
         /// 지정된 두 축의 값으로 이루어진 Vector2Int를 가져옵니다.
@@ -218,50 +236,70 @@ namespace Hian.Extensions
         /// <param name="axis1">첫 번째 축의 인덱스.</param>
         /// <param name="axis2">두 번째 축의 인덱스.</param>
         /// <returns>지정된 두 축의 값으로 이루어진 Vector2Int.</returns>
-        public static Vector2Int Get(this Vector3Int vector, int axis1, int axis2) =>
-            new(vector[axis1], vector[axis2]);
+        public static Vector2Int Get(this Vector3Int vector, int axis1, int axis2)
+        {
+            return new(vector[axis1], vector[axis2]);
+        }
 
         /// <summary>
         /// x, y 축의 값으로 이루어진 Vector2Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x, y 축의 값으로 이루어진 Vector2Int.</returns>
-        public static Vector2Int GetXY(this Vector3Int vector) => Get(vector, 0, 1);
+        public static Vector2Int GetXY(this Vector3Int vector)
+        {
+            return Get(vector, 0, 1);
+        }
 
         /// <summary>
         /// x, z 축의 값으로 이루어진 Vector2Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x, z 축의 값으로 이루어진 Vector2Int.</returns>
-        public static Vector2Int GetXZ(this Vector3Int vector) => Get(vector, 0, 2);
+        public static Vector2Int GetXZ(this Vector3Int vector)
+        {
+            return Get(vector, 0, 2);
+        }
 
         /// <summary>
         /// y, x 축의 값으로 이루어진 Vector2Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>y, x 축의 값으로 이루어진 Vector2Int.</returns>
-        public static Vector2Int GetYX(this Vector3Int vector) => Get(vector, 1, 0);
+        public static Vector2Int GetYX(this Vector3Int vector)
+        {
+            return Get(vector, 1, 0);
+        }
 
         /// <summary>
         /// y, z 축의 값으로 이루어진 Vector2Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>y, z 축의 값으로 이루어진 Vector2Int.</returns>
-        public static Vector2Int GetYZ(this Vector3Int vector) => Get(vector, 1, 2);
+        public static Vector2Int GetYZ(this Vector3Int vector)
+        {
+            return Get(vector, 1, 2);
+        }
 
         /// <summary>
         /// z, x 축의 값으로 이루어진 Vector2Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>z, x 축의 값으로 이루어진 Vector2Int.</returns>
-        public static Vector2Int GetZX(this Vector3Int vector) => Get(vector, 2, 0);
+        public static Vector2Int GetZX(this Vector3Int vector)
+        {
+            return Get(vector, 2, 0);
+        }
 
         /// <summary>
         /// z, y 축의 값으로 이루어진 Vector2Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>z, y 축의 값으로 이루어진 Vector2Int.</returns>
-        public static Vector2Int GetZY(this Vector3Int vector) => Get(vector, 2, 1);
+        public static Vector2Int GetZY(this Vector3Int vector)
+        {
+            return Get(vector, 2, 1);
+        }
 
         /// <summary>
         /// 지정된 세 축의 순서를 바꾼 새 Vector3Int를 가져옵니다.
@@ -271,43 +309,60 @@ namespace Hian.Extensions
         /// <param name="axis2">두 번째 축의 인덱스.</param>
         /// <param name="axis3">세 번째 축의 인덱스.</param>
         /// <returns>지정된 세 축의 순서를 바꾼 새 Vector3Int.</returns>
-        public static Vector3Int Get(this Vector3Int vector, int axis1, int axis2, int axis3) =>
-            new(vector[axis1], vector[axis2], vector[axis3]);
+        public static Vector3Int Get(this Vector3Int vector, int axis1, int axis2, int axis3)
+        {
+            return new(vector[axis1], vector[axis2], vector[axis3]);
+        }
 
         /// <summary>
         /// x, z, y 순서로 바꾼 새 Vector3Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x, z, y 순서로 바꾼 새 Vector3Int.</returns>
-        public static Vector3Int GetXZY(this Vector3Int vector) => Get(vector, 0, 2, 1);
+        public static Vector3Int GetXZY(this Vector3Int vector)
+        {
+            return Get(vector, 0, 2, 1);
+        }
 
         /// <summary>
         /// y, x, z 순서로 바꾼 새 Vector3Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>y, x, z 순서로 바꾼 새 Vector3Int.</returns>
-        public static Vector3Int GetYXZ(this Vector3Int vector) => Get(vector, 1, 0, 2);
+        public static Vector3Int GetYXZ(this Vector3Int vector)
+        {
+            return Get(vector, 1, 0, 2);
+        }
 
         /// <summary>
         /// y, z, x 순서로 바꾼 새 Vector3Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>y, z, x 순서로 바꾼 새 Vector3Int.</returns>
-        public static Vector3Int GetYZX(this Vector3Int vector) => Get(vector, 1, 2, 0);
+        public static Vector3Int GetYZX(this Vector3Int vector)
+        {
+            return Get(vector, 1, 2, 0);
+        }
 
         /// <summary>
         /// z, x, y 순서로 바꾼 새 Vector3Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>z, x, y 순서로 바꾼 새 Vector3Int.</returns>
-        public static Vector3Int GetZXY(this Vector3Int vector) => Get(vector, 2, 0, 1);
+        public static Vector3Int GetZXY(this Vector3Int vector)
+        {
+            return Get(vector, 2, 0, 1);
+        }
 
         /// <summary>
         /// z, y, x 순서로 바꾼 새 Vector3Int를 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>z, y, x 순서로 바꾼 새 Vector3Int.</returns>
-        public static Vector3Int GetZYX(this Vector3Int vector) => Get(vector, 2, 1, 0);
+        public static Vector3Int GetZYX(this Vector3Int vector)
+        {
+            return Get(vector, 2, 1, 0);
+        }
 
         /// <summary>
         /// 벡터에서 가장 큰 성분의 인덱스와 값을 가져옵니다.
@@ -316,8 +371,8 @@ namespace Hian.Extensions
         /// <returns>가장 큰 성분의 인덱스와 값을 포함하는 튜플.</returns>
         public static (int index, int value) MaxComponent(this Vector3Int vector)
         {
-            var index = 0;
-            for (var i = 1; i < 3; i++)
+            int index = 0;
+            for (int i = 1; i < 3; i++)
             {
                 if (vector[i] > vector[index])
                 {
@@ -335,8 +390,8 @@ namespace Hian.Extensions
         /// <returns>가장 작은 성분의 인덱스와 값을 포함하는 튜플.</returns>
         public static (int index, int value) MinComponent(this Vector3Int vector)
         {
-            var index = 0;
-            for (var i = 1; i < 3; i++)
+            int index = 0;
+            for (int i = 1; i < 3; i++)
             {
                 if (vector[i] < vector[index])
                 {
@@ -352,8 +407,10 @@ namespace Hian.Extensions
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>모든 성분이 절대값으로 변환된 새 Vector3Int.</returns>
-        public static Vector3Int Abs(this Vector3Int vector) =>
-            new(Mathf.Abs(vector.x), Mathf.Abs(vector.y), Mathf.Abs(vector.z));
+        public static Vector3Int Abs(this Vector3Int vector)
+        {
+            return new(Mathf.Abs(vector.x), Mathf.Abs(vector.y), Mathf.Abs(vector.z));
+        }
 
         /// <summary>
         /// 벡터의 모든 성분을 [min, max] 범위로 제한합니다.
@@ -377,16 +434,20 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="other">나눌 벡터.</param>
         /// <returns>모든 성분이 다른 벡터로 나누어진 새 Vector3Int.</returns>
-        public static Vector3Int Divide(this Vector3Int vector, Vector3Int other) =>
-            new(vector.x / other.x, vector.y / other.y, vector.z / other.z);
+        public static Vector3Int Divide(this Vector3Int vector, Vector3Int other)
+        {
+            return new(vector.x / other.x, vector.y / other.y, vector.z / other.z);
+        }
 
         /// <summary>
         /// 벡터의 모든 성분이 같은지 확인합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>모든 성분이 같으면 true, 그렇지 않으면 false.</returns>
-        public static bool IsUniform(this Vector3Int vector) =>
-            vector.x == vector.y && vector.y == vector.z;
+        public static bool IsUniform(this Vector3Int vector)
+        {
+            return vector.x == vector.y && vector.y == vector.z;
+        }
 
         /// <summary>
         /// 주어진 점들 중에서 기준 점에 가장 가까운 점의 정보(점, 인덱스)를 가져옵니다.
@@ -413,17 +474,17 @@ namespace Hian.Extensions
             IEnumerable<Vector3Int> points
         )
         {
-            var enumerator = points.GetEnumerator();
+            IEnumerator<Vector3Int> enumerator = points.GetEnumerator();
 
-            var index = -1;
-            var closestIndex = -1;
+            int index = -1;
+            int closestIndex = -1;
             Vector3Int closestPoint = Vector3Int.zero;
-            var closestDistance = float.MaxValue;
+            float closestDistance = float.MaxValue;
 
             while (enumerator.MoveNext())
             {
                 ++index;
-                var distance = Vector3.Distance((Vector3)point, (Vector3)enumerator.Current);
+                float distance = Vector3.Distance((Vector3)point, (Vector3)enumerator.Current);
 
                 if (distance < closestDistance)
                 {
@@ -475,6 +536,9 @@ namespace Hian.Extensions
         /// </summary>
         /// <param name="vector">변환할 Vector3Int.</param>
         /// <returns>변환된 Vector3.</returns>
-        public static Vector3 ToVector3(this Vector3Int vector) => vector;
+        public static Vector3 ToVector3(this Vector3Int vector)
+        {
+            return vector;
+        }
     }
 }

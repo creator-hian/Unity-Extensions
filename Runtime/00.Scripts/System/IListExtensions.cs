@@ -19,7 +19,7 @@ namespace Hian.Extensions
         /// <returns>꺼낸 요소.</returns>
         public static T Pop<T>(this IList<T> list, int index)
         {
-            var element = list[index];
+            T element = list[index];
             list.RemoveAt(index);
 
             return element;
@@ -34,13 +34,17 @@ namespace Hian.Extensions
         /// <returns>꺼낸 요소들.</returns>
         public static List<T> Pop<T>(this IList<T> list, params int[] indexes)
         {
-            var popped = new List<T>();
+            List<T> popped = new List<T>();
 
-            foreach (var index in indexes)
+            foreach (int index in indexes)
+            {
                 popped.Add(list[index]);
+            }
 
-            foreach (var index in indexes.OrderByDescending(i => i))
+            foreach (int index in indexes.OrderByDescending(static i => i))
+            {
                 list.RemoveAt(index);
+            }
 
             return popped;
         }
@@ -53,7 +57,7 @@ namespace Hian.Extensions
         /// <returns>꺼낸 요소와 해당 인덱스를 포함하는 튜플.</returns>
         public static (T element, int index) PopRandom<T>(this IList<T> list)
         {
-            var index = UnityEngine.Random.Range(0, list.Count);
+            int index = UnityEngine.Random.Range(0, list.Count);
             return (list.Pop(index), index);
         }
 
@@ -72,12 +76,16 @@ namespace Hian.Extensions
         )
         {
             if (clampCount)
+            {
                 count = Mathf.Clamp(count, 0, list.Count);
+            }
 
-            var popped = new List<(T element, int index)>();
+            List<(T element, int index)> popped = new List<(T element, int index)>();
 
             for (int i = 0; i < count; i++)
+            {
                 popped.Add(list.PopRandom());
+            }
 
             return popped;
         }
@@ -109,8 +117,8 @@ namespace Hian.Extensions
             IEnumerable<float> probabilities
         )
         {
-            var random = list.GetRandomWithProbability(probabilities);
-            Pop(list, random.index);
+            (T element, int index) random = list.GetRandomWithProbability(probabilities);
+            _ = Pop(list, random.index);
 
             return random;
         }
@@ -127,8 +135,8 @@ namespace Hian.Extensions
             Func<T, float> probabilitiesSelector
         )
         {
-            var random = list.GetRandomWithProbability(probabilitiesSelector);
-            Pop(list, random.index);
+            (T element, int index) random = list.GetRandomWithProbability(probabilitiesSelector);
+            _ = Pop(list, random.index);
 
             return random;
         }
@@ -142,7 +150,9 @@ namespace Hian.Extensions
         public static void RemoveRange<T>(this IList<T> list, int index)
         {
             for (int i = list.Count - 1; i >= index; i--)
+            {
                 list.RemoveAt(i);
+            }
         }
 
         /// <summary>
@@ -153,11 +163,11 @@ namespace Hian.Extensions
         /// <returns>섞인 원본 리스트.</returns>
         public static IList<T> Shuffle<T>(this IList<T> list)
         {
-            var n = list.Count;
+            int n = list.Count;
 
             while (n > 1)
             {
-                var index = UnityEngine.Random.Range(0, --n + 1);
+                int index = UnityEngine.Random.Range(0, --n + 1);
                 (list[index], list[n]) = (list[n], list[index]);
             }
 

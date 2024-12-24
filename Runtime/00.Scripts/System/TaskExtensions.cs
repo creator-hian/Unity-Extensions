@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,10 +10,10 @@ namespace Hian.Extensions
             CancellationToken cancellationToken
         )
         {
-            var tcs = new TaskCompletionSource<object>(); // 불필요한 bool 대신 object 사용
+            TaskCompletionSource<object> tcs = new TaskCompletionSource<object>(); // 불필요한 bool 대신 object 사용
             using (
                 cancellationToken.Register(
-                    s => ((TaskCompletionSource<object>)s).TrySetResult(null),
+                    static s => ((TaskCompletionSource<object>)s).TrySetResult(null),
                     tcs
                 )
             )

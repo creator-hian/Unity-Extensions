@@ -20,11 +20,15 @@ namespace Hian.Extensions
             where T : Component
         {
             foreach (
-                var root in scene.GetRootGameObjects().Where(r => r.activeSelf || includeInactive)
+                GameObject root in scene
+                    .GetRootGameObjects()
+                    .Where(r => r.activeSelf || includeInactive)
             )
             {
                 if (root.TryGetComponentInChildren<T>(out T component, includeInactive))
+                {
                     return component;
+                }
             }
 
             return null;
@@ -39,7 +43,9 @@ namespace Hian.Extensions
         /// <returns>찾은 게임 오브젝트들.</returns>
         public static T[] FindObjectsOfType<T>(this Scene scene, bool includeInactive = false)
         {
-            var filtered = scene.GetRootGameObjects().Where(r => r.activeSelf || includeInactive);
+            System.Collections.Generic.IEnumerable<GameObject> filtered = scene
+                .GetRootGameObjects()
+                .Where(r => r.activeSelf || includeInactive);
             return filtered
                 .SelectMany(go => go.GetComponentsInChildren<T>(includeInactive))
                 .ToArray();
@@ -53,7 +59,9 @@ namespace Hian.Extensions
         /// <returns></returns>
         public static int ObjectsCount(this Scene scene, bool includeInactive = false)
         {
-            var filtered = scene.GetRootGameObjects().Where(r => r.activeSelf || includeInactive);
+            System.Collections.Generic.IEnumerable<GameObject> filtered = scene
+                .GetRootGameObjects()
+                .Where(r => r.activeSelf || includeInactive);
             return filtered
                 .SelectMany(r => r.GetComponentsInChildren<Transform>(includeInactive))
                 .Count();

@@ -17,18 +17,15 @@ namespace Hian.Extensions
         /// <exception cref="ArgumentOutOfRangeException">축 인덱스가 0 또는 1이 아닌 경우 발생합니다.</exception>
         public static Vector2Int With(this Vector2Int vector, int axis, int value)
         {
-            switch (axis)
+            return axis switch
             {
-                case 0:
-                    return vector.WithX(value);
-                case 1:
-                    return vector.WithY(value);
-                default:
-                    throw new ArgumentOutOfRangeException(
-                        "axis",
-                        "축 인덱스는 0 또는 1이어야 합니다."
-                    );
-            }
+                0 => vector.WithX(value),
+                1 => vector.WithY(value),
+                _ => throw new ArgumentOutOfRangeException(
+                    "axis",
+                    "축 인덱스는 0 또는 1이어야 합니다."
+                ),
+            };
         }
 
         /// <summary>
@@ -73,45 +70,60 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="axis">값을 반전할 축의 인덱스 (0: x, 1: y).</param>
         /// <returns>지정된 축의 값이 반전된 새 Vector2Int.</returns>
-        public static Vector2Int WithNegate(this Vector2Int vector, int axis) =>
-            vector.With(axis, -vector[axis]);
+        public static Vector2Int WithNegate(this Vector2Int vector, int axis)
+        {
+            return vector.With(axis, -vector[axis]);
+        }
 
         /// <summary>
         /// x 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>x 축의 값이 반전된 새 Vector2Int.</returns>
-        public static Vector2Int WithNegateX(this Vector2Int vector) => WithNegate(vector, 0);
+        public static Vector2Int WithNegateX(this Vector2Int vector)
+        {
+            return WithNegate(vector, 0);
+        }
 
         /// <summary>
         /// y 축의 값을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>y 축의 값이 반전된 새 Vector2Int.</returns>
-        public static Vector2Int WithNegateY(this Vector2Int vector) => WithNegate(vector, 1);
+        public static Vector2Int WithNegateY(this Vector2Int vector)
+        {
+            return WithNegate(vector, 1);
+        }
 
         /// <summary>
         /// 벡터의 모든 성분을 반전합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>모든 성분이 반전된 새 Vector2Int.</returns>
-        public static Vector2Int Negate(this Vector2Int vector) => new(-vector.x, -vector.y);
+        public static Vector2Int Negate(this Vector2Int vector)
+        {
+            return new(-vector.x, -vector.y);
+        }
 
         /// <summary>
         /// 벡터에서 가장 큰 성분의 인덱스와 값을 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>가장 큰 성분의 인덱스와 값을 포함하는 튜플.</returns>
-        public static (int index, int value) MaxComponent(this Vector2Int vector) =>
-            vector.x >= vector.y ? (0, vector.x) : (1, vector.y);
+        public static (int index, int value) MaxComponent(this Vector2Int vector)
+        {
+            return vector.x >= vector.y ? (0, vector.x) : (1, vector.y);
+        }
 
         /// <summary>
         /// 벡터에서 가장 작은 성분의 인덱스와 값을 가져옵니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>가장 작은 성분의 인덱스와 값을 포함하는 튜플.</returns>
-        public static (int index, int value) MinComponent(this Vector2Int vector) =>
-            vector.x <= vector.y ? (0, vector.x) : (1, vector.y);
+        public static (int index, int value) MinComponent(this Vector2Int vector)
+        {
+            return vector.x <= vector.y ? (0, vector.x) : (1, vector.y);
+        }
 
         /// <summary>
         /// 벡터의 모든 성분을 다른 벡터로 나눕니다.
@@ -119,15 +131,20 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="other">나눌 벡터.</param>
         /// <returns>모든 성분이 다른 벡터로 나누어진 새 Vector2Int.</returns>
-        public static Vector2Int Divide(this Vector2Int vector, Vector2Int other) =>
-            new(vector.x / other.x, vector.y / other.y);
+        public static Vector2Int Divide(this Vector2Int vector, Vector2Int other)
+        {
+            return new(vector.x / other.x, vector.y / other.y);
+        }
 
         /// <summary>
         /// 벡터의 모든 성분이 같은지 확인합니다.
         /// </summary>
         /// <param name="vector">대상 벡터.</param>
         /// <returns>모든 성분이 같으면 true, 그렇지 않으면 false.</returns>
-        public static bool IsUniform(this Vector2Int vector) => vector.x == vector.y;
+        public static bool IsUniform(this Vector2Int vector)
+        {
+            return vector.x == vector.y;
+        }
 
         /// <summary>
         /// 대상 Vector2Int가 지정된 범위 내에 있는지 확인합니다.
@@ -146,8 +163,10 @@ namespace Hian.Extensions
         /// </summary>
         /// <param name="vector">대상 Vector2Int.</param>
         /// <returns>각 컴포넌트가 절대값으로 변환된 새 Vector2Int.</returns>
-        public static Vector2Int Abs(this Vector2Int vector) =>
-            new(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
+        public static Vector2Int Abs(this Vector2Int vector)
+        {
+            return new(Mathf.Abs(vector.x), Mathf.Abs(vector.y));
+        }
 
         /// <summary>
         /// Vector2Int의 각 컴포넌트를 지정된 최소/최대 범위로 제한합니다.
@@ -160,7 +179,9 @@ namespace Hian.Extensions
         public static Vector2Int Clamp(this Vector2Int vector, int min, int max)
         {
             if (min > max)
+            {
                 throw new ArgumentException("min은 max보다 클 수 없습니다.");
+            }
 
             return new Vector2Int(Mathf.Clamp(vector.x, min, max), Mathf.Clamp(vector.y, min, max));
         }
@@ -193,7 +214,7 @@ namespace Hian.Extensions
         /// <returns>두 Vector2Int의 내적.</returns>
         public static int Dot(this Vector2Int vector, Vector2Int other)
         {
-            return vector.x * other.x + vector.y * other.y;
+            return (vector.x * other.x) + (vector.y * other.y);
         }
 
         /// <summary>
@@ -204,7 +225,7 @@ namespace Hian.Extensions
         /// <returns>두 Vector2Int의 외적.</returns>
         public static int Cross(this Vector2Int vector, Vector2Int other)
         {
-            return vector.x * other.y - vector.y * other.x;
+            return (vector.x * other.y) - (vector.y * other.x);
         }
 
         /// <summary>
@@ -232,17 +253,17 @@ namespace Hian.Extensions
             IEnumerable<Vector2Int> points
         )
         {
-            var enumerator = points.GetEnumerator();
+            IEnumerator<Vector2Int> enumerator = points.GetEnumerator();
 
-            var index = -1;
-            var closestIndex = -1;
-            var closestPoint = Vector2Int.zero;
-            var closestDistance = float.MaxValue;
+            int index = -1;
+            int closestIndex = -1;
+            Vector2Int closestPoint = Vector2Int.zero;
+            float closestDistance = float.MaxValue;
 
             while (enumerator.MoveNext())
             {
                 ++index;
-                var distance = Vector2Int.Distance(point, enumerator.Current);
+                float distance = Vector2Int.Distance(point, enumerator.Current);
 
                 if (distance < closestDistance)
                 {
@@ -293,8 +314,10 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="x">x 축에 삽입할 값.</param>
         /// <returns>3차원 벡터.</returns>
-        public static Vector3Int InsertX(this Vector2Int vector, int x = 0) =>
-            new(x, vector.x, vector.y);
+        public static Vector3Int InsertX(this Vector2Int vector, int x = 0)
+        {
+            return new(x, vector.x, vector.y);
+        }
 
         /// <summary>
         /// y 축에 값을 삽입하고 벡터를 3차원으로 확장합니다.
@@ -302,8 +325,10 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="y">y 축에 삽입할 값.</param>
         /// <returns>3차원 벡터.</returns>
-        public static Vector3Int InsertY(this Vector2Int vector, int y = 0) =>
-            new(vector.x, y, vector.y);
+        public static Vector3Int InsertY(this Vector2Int vector, int y = 0)
+        {
+            return new(vector.x, y, vector.y);
+        }
 
         /// <summary>
         /// z 축에 값을 삽입하고 벡터를 3차원으로 확장합니다.
@@ -311,30 +336,39 @@ namespace Hian.Extensions
         /// <param name="vector">대상 벡터.</param>
         /// <param name="z">z 축에 삽입할 값.</param>
         /// <returns>3차원 벡터.</returns>
-        public static Vector3Int InsertZ(this Vector2Int vector, int z = 0) =>
-            new(vector.x, vector.y, z);
+        public static Vector3Int InsertZ(this Vector2Int vector, int z = 0)
+        {
+            return new(vector.x, vector.y, z);
+        }
 
         /// <summary>
         /// Vector2Int를 Vector2로 변환합니다.
         /// </summary>
         /// <param name="vector">변환할 Vector2Int.</param>
         /// <returns>변환된 Vector2.</returns>
-        public static Vector2 ToVector2(this Vector2Int vector) => vector;
+        public static Vector2 ToVector2(this Vector2Int vector)
+        {
+            return vector;
+        }
 
         /// <summary>
         /// Vector2Int를 Vector3Int로 변환합니다.
         /// </summary>
         /// <param name="vector">변환할 Vector2Int.</param>
         /// <returns>변환된 Vector3Int.</returns>
-        public static Vector3Int ToVector3Int(this Vector2Int vector) =>
-            new Vector3Int(vector.x, vector.y, 0);
+        public static Vector3Int ToVector3Int(this Vector2Int vector)
+        {
+            return new Vector3Int(vector.x, vector.y, 0);
+        }
 
         /// <summary>
         /// Vector2Int를 Vector3로 변환합니다.
         /// </summary>
         /// <param name="vector">변환할 Vector2Int.</param>
         /// <returns>변환된 Vector3.</returns>
-        public static Vector3 ToVector3(this Vector2Int vector) =>
-            new Vector3(vector.x, vector.y, 0);
+        public static Vector3 ToVector3(this Vector2Int vector)
+        {
+            return new Vector3(vector.x, vector.y, 0);
+        }
     }
 }

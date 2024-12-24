@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class Vector2IntExtensionsTests
 {
-    private const float FloatTolerance = 1e-4f;
-
     #region With
 
     /// <summary>
@@ -16,11 +14,11 @@ public class Vector2IntExtensionsTests
     public void With_WhenCalled_UpdatesSpecifiedAxisValue()
     {
         // Arrange
-        var vector = new Vector2Int(1, 1);
+        Vector2Int vector = new Vector2Int(1, 1);
 
         // Act
-        var resultX = vector.With(0, 2);
-        var resultY = vector.With(1, 3);
+        Vector2Int resultX = vector.With(0, 2);
+        Vector2Int resultY = vector.With(1, 3);
 
         // Assert
         Assert.AreEqual(2, resultX.x);
@@ -36,10 +34,10 @@ public class Vector2IntExtensionsTests
     public void With_WhenCalledWithInvalidAxis_ThrowsArgumentOutOfRangeException()
     {
         // Arrange
-        var vector = new Vector2Int(1, 1);
+        Vector2Int vector = new Vector2Int(1, 1);
 
         // Act & Assert
-        Assert.Throws<ArgumentOutOfRangeException>(() => vector.With(2, 2));
+        _ = Assert.Throws<ArgumentOutOfRangeException>(() => vector.With(2, 2));
     }
 
     /// <summary>
@@ -49,10 +47,10 @@ public class Vector2IntExtensionsTests
     public void WithXY_WhenCalled_UpdatesXAndYValues()
     {
         // Arrange
-        var vector = new Vector2Int(1, 1);
+        Vector2Int vector = new Vector2Int(1, 1);
 
         // Act
-        var result = vector.WithXY(2, 3);
+        Vector2Int result = vector.WithXY(2, 3);
 
         // Assert
         Assert.AreEqual(2, result.x);
@@ -70,11 +68,11 @@ public class Vector2IntExtensionsTests
     public void WithNegate_WhenCalled_NegatesSpecifiedAxisValue()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var resultX = vector.WithNegate(0);
-        var resultY = vector.WithNegate(1);
+        Vector2Int resultX = vector.WithNegate(0);
+        Vector2Int resultY = vector.WithNegate(1);
 
         // Assert
         Assert.AreEqual(-1, resultX.x);
@@ -90,10 +88,10 @@ public class Vector2IntExtensionsTests
     public void WithNegateX_WhenCalled_NegatesXValue()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.WithNegateX();
+        Vector2Int result = vector.WithNegateX();
 
         // Assert
         Assert.AreEqual(-1, result.x);
@@ -107,10 +105,10 @@ public class Vector2IntExtensionsTests
     public void WithNegateY_WhenCalled_NegatesYValue()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.WithNegateY();
+        Vector2Int result = vector.WithNegateY();
 
         // Assert
         Assert.AreEqual(1, result.x);
@@ -124,10 +122,10 @@ public class Vector2IntExtensionsTests
     public void Negate_WhenCalled_NegatesAllComponents()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.Negate();
+        Vector2Int result = vector.Negate();
 
         // Assert
         Assert.AreEqual(-1, result.x);
@@ -145,10 +143,10 @@ public class Vector2IntExtensionsTests
     public void MaxComponent_WhenCalled_ReturnsIndexOfMaxValue()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var (index, value) = vector.MaxComponent();
+        (int index, int value) = vector.MaxComponent();
 
         // Assert
         Assert.AreEqual(1, index);
@@ -162,10 +160,10 @@ public class Vector2IntExtensionsTests
     public void MinComponent_WhenCalled_ReturnsIndexOfMinValue()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var (index, value) = vector.MinComponent();
+        (int index, int value) = vector.MinComponent();
 
         // Assert
         Assert.AreEqual(0, index);
@@ -183,11 +181,11 @@ public class Vector2IntExtensionsTests
     public void Divide_WhenCalled_DividesAllComponentsByOtherVector()
     {
         // Arrange
-        var vector = new Vector2Int(4, 2);
-        var other = new Vector2Int(2, 2);
+        Vector2Int vector = new Vector2Int(4, 2);
+        Vector2Int other = new Vector2Int(2, 2);
 
         // Act
-        var result = vector.Divide(other);
+        Vector2Int result = vector.Divide(other);
 
         // Assert
         Assert.AreEqual(2, result.x);
@@ -202,10 +200,10 @@ public class Vector2IntExtensionsTests
     public void IsUniform_WhenCalled_ReturnsCorrectResult(int x, int y, bool expected)
     {
         // Arrange
-        var vector = new Vector2Int(x, y);
+        Vector2Int vector = new Vector2Int(x, y);
 
         // Act
-        var result = vector.IsUniform();
+        bool result = vector.IsUniform();
 
         // Assert
         Assert.AreEqual(expected, result);
@@ -222,11 +220,11 @@ public class Vector2IntExtensionsTests
     public void Dot_WhenCalled_CalculatesDotProductCorrectly()
     {
         // Arrange
-        var vector1 = new Vector2Int(1, 2);
-        var vector2 = new Vector2Int(3, 4);
+        Vector2Int vector1 = new Vector2Int(1, 2);
+        Vector2Int vector2 = new Vector2Int(3, 4);
 
         // Act
-        var result = vector1.Dot(vector2);
+        int result = vector1.Dot(vector2);
 
         // Assert
         Assert.AreEqual(11, result);
@@ -239,11 +237,11 @@ public class Vector2IntExtensionsTests
     public void Cross_WhenCalled_CalculatesCrossProductCorrectly()
     {
         // Arrange
-        var vector1 = new Vector2Int(1, 2);
-        var vector2 = new Vector2Int(3, 4);
+        Vector2Int vector1 = new Vector2Int(1, 2);
+        Vector2Int vector2 = new Vector2Int(3, 4);
 
         // Act
-        var result = vector1.Cross(vector2);
+        int result = vector1.Cross(vector2);
 
         // Assert
         Assert.AreEqual(-2, result);
@@ -260,11 +258,16 @@ public class Vector2IntExtensionsTests
     public void GetClosestPoint_WhenCalled_ReturnsClosestPointInfo()
     {
         // Arrange
-        var point = new Vector2Int(0, 0);
-        var points = new[] { new Vector2Int(1, 1), new Vector2Int(2, 2), new Vector2Int(3, 3) };
+        Vector2Int point = new Vector2Int(0, 0);
+        Vector2Int[] points = new[]
+        {
+            new Vector2Int(1, 1),
+            new Vector2Int(2, 2),
+            new Vector2Int(3, 3),
+        };
 
         // Act
-        var (closestPoint, index) = point.GetClosestPoint(points);
+        (Vector2Int closestPoint, int index) = point.GetClosestPoint(points);
 
         // Assert
         Assert.AreEqual(new Vector2Int(1, 1), closestPoint);
@@ -278,12 +281,12 @@ public class Vector2IntExtensionsTests
     public void GetClosestPointOnRay_WhenCalled_ReturnsClosestPointInfoOnRay()
     {
         // Arrange
-        var point = new Vector2Int(2, 2);
-        var origin = new Vector2(0f, 0f);
-        var direction = new Vector2(1f, 0f).normalized;
+        Vector2Int point = new Vector2Int(2, 2);
+        Vector2 origin = new Vector2(0f, 0f);
+        Vector2 direction = new Vector2(1f, 0f).normalized;
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnRay(origin, direction);
+        (Vector2 closestPoint, float distance) = point.GetClosestPointOnRay(origin, direction);
 
         // Assert
         Assert.AreEqual(new Vector2(2, 0), closestPoint);
@@ -297,12 +300,12 @@ public class Vector2IntExtensionsTests
     public void GetClosestPointOnSegment_WhenCalled_ReturnsClosestPointInfoOnSegment()
     {
         // Arrange
-        var point = new Vector2Int(2, 2);
-        var start = new Vector2Int(0, 0);
-        var end = new Vector2Int(4, 0);
+        Vector2Int point = new Vector2Int(2, 2);
+        Vector2Int start = new Vector2Int(0, 0);
+        Vector2Int end = new Vector2Int(4, 0);
 
         // Act
-        var (closestPoint, distance) = point.GetClosestPointOnSegment(start, end);
+        (Vector2 closestPoint, float distance) = point.GetClosestPointOnSegment(start, end);
 
         // Assert
         Assert.AreEqual(new Vector2(2, 0), closestPoint);
@@ -320,10 +323,10 @@ public class Vector2IntExtensionsTests
     public void InsertX_WhenCalled_Returns3DVectorWithInsertedX()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.InsertX(3);
+        Vector3Int result = vector.InsertX(3);
 
         // Assert
         Assert.AreEqual(3, result.x);
@@ -338,10 +341,10 @@ public class Vector2IntExtensionsTests
     public void InsertY_WhenCalled_Returns3DVectorWithInsertedY()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.InsertY(3);
+        Vector3Int result = vector.InsertY(3);
 
         // Assert
         Assert.AreEqual(1, result.x);
@@ -356,10 +359,10 @@ public class Vector2IntExtensionsTests
     public void InsertZ_WhenCalled_Returns3DVectorWithInsertedZ()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.InsertZ(3);
+        Vector3Int result = vector.InsertZ(3);
 
         // Assert
         Assert.AreEqual(1, result.x);
@@ -378,10 +381,10 @@ public class Vector2IntExtensionsTests
     public void ToVector2_WhenCalled_ReturnsVector2()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.ToVector2();
+        Vector2 result = vector.ToVector2();
 
         // Assert
         Assert.AreEqual(1f, result.x);
@@ -395,10 +398,10 @@ public class Vector2IntExtensionsTests
     public void ToVector3Int_WhenCalled_ReturnsVector3Int()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.ToVector3Int();
+        Vector3Int result = vector.ToVector3Int();
 
         // Assert
         Assert.AreEqual(1, result.x);
@@ -413,10 +416,10 @@ public class Vector2IntExtensionsTests
     public void ToVector3_WhenCalled_ReturnsVector3()
     {
         // Arrange
-        var vector = new Vector2Int(1, 2);
+        Vector2Int vector = new Vector2Int(1, 2);
 
         // Act
-        var result = vector.ToVector3();
+        Vector3 result = vector.ToVector3();
 
         // Assert
         Assert.AreEqual(1f, result.x);

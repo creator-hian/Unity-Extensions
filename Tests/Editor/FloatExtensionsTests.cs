@@ -1,6 +1,5 @@
 using Hian.Extensions;
 using NUnit.Framework;
-using UnityEngine;
 
 public class FloatExtensionsTests
 {
@@ -31,7 +30,7 @@ public class FloatExtensionsTests
         float value2 = 1.00002f;
 
         // Act
-        bool result = value1.Approx(value2);
+        _ = value1.Approx(value2);
 
         // Assert
         Assert.That(value1, Is.EqualTo(value2).Within(FloatTolerance));
@@ -61,6 +60,6 @@ public class FloatExtensionsTests
         float result = value.WithRandomSign();
 
         // Assert
-        Assert.IsTrue(result == 1f || result == -1f);
+        Assert.IsTrue(result is 1f or (-1f));
     }
 }
