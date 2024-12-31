@@ -756,5 +756,56 @@ namespace Hian.Extensions
         {
             return transform as RectTransform;
         }
+
+        /// <summary>
+        /// 대상 Transform이 특정 거리 및 선택적으로 특정 각도(FOV) 내에 있는지 확인합니다.
+        /// </summary>
+        /// <param name="source">확인할 Transform.</param>
+        /// <param name="target">거리와 각도를 비교할 대상 Transform.</param>
+        /// <param name="maxDistance">두 Transform 간의 최대 허용 거리.</param>
+        /// <param name="maxAngle">Transform의 전방 벡터와 대상으로의 방향 사이의 최대 허용 각도 (기본값 360).</param>
+        /// <returns>Transform이 대상의 범위와 각도(제공된 경우) 내에 있으면 true, 그렇지 않으면 false.</returns>
+        public static bool InRangeOf(
+            this Transform source,
+            Transform target,
+            float maxDistance,
+            float maxAngle = 360f
+        )
+        {
+            Vector3 directionToTarget = (target.position - source.position).WithY(0);
+            return directionToTarget.magnitude <= maxDistance
+                && Vector3.Angle(source.forward, directionToTarget) <= maxAngle / 2;
+        }
+
+        /// <summary>
+        /// 모든 자식 게임 오브젝트를 활성화합니다.
+        /// </summary>
+        /// <param name="transform">대상 Transform.</param>
+        public static void EnableChilds(this Transform transform)
+        {
+            transform.ForEachChild(child => child.gameObject.SetActive(true));
+        }
+
+        /// <summary>
+        /// 모든 자식 게임 오브젝트를 비활성화합니다.
+        /// </summary>
+        /// <param name="transform">대상 Transform.</param>
+        public static void DisableChilds(this Transform transform)
+        {
+            transform.ForEachChild(child => child.gameObject.SetActive(false));
+        }
+
+        /// <summary>
+        /// 모든 자식에 대해 지정된 작업을 수행합니다.
+        /// </summary>
+        /// <param name="transform">대상 Transform.</param>
+        /// <param name="action">각 자식에 대해 수행할 작업.</param>
+        public static void ForEachChild(this Transform transform, Action<Transform> action)
+        {
+            for (var i = transform.childCount - 1; i >= 0; i--)
+            {
+                action(transform.GetChild(i));
+            }
+        }
     }
 }
