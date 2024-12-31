@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_5_3_OR_NEWER
 using UnityEngine;
+#endif
 
 namespace Hian.Extensions
 {
@@ -10,6 +12,10 @@ namespace Hian.Extensions
     /// </summary>
     public static class IListExtensions
     {
+#if !UNITY_5_3_OR_NEWER
+        private static readonly Random _random = new Random();
+#endif
+
         /// <summary>
         /// <paramref name="index"/>에 있는 요소를 꺼냅니다.
         /// </summary>
@@ -50,6 +56,45 @@ namespace Hian.Extensions
         }
 
         /// <summary>
+        /// 리스트의 마지막 요소를 반환하고 제거합니다.
+        /// </summary>
+        /// <typeparam name="T">요소 타입.</typeparam>
+        /// <param name="list">대상 리스트.</param>
+        /// <returns>마지막 요소.</returns>
+        /// <exception cref="InvalidOperationException">리스트가 비어있을 경우 발생.</exception>
+        public static T PopLast<T>(this IList<T> list)
+        {
+            if (list.IsNullOrEmpty())
+            {
+                throw new InvalidOperationException("리스트가 비어있습니다.");
+            }
+
+            int lastIndex = list.Count - 1;
+            T lastItem = list[lastIndex];
+            list.RemoveAt(lastIndex);
+            return lastItem;
+        }
+
+        /// <summary>
+        /// 리스트의 첫 번째 요소를 반환하고 제거합니다.
+        /// </summary>
+        /// <typeparam name="T">요소 타입.</typeparam>
+        /// <param name="list">대상 리스트.</param>
+        /// <returns>첫 번째 요소.</returns>
+        /// <exception cref="InvalidOperationException">리스트가 비어있을 경우 발생.</exception>
+        public static T PopFirst<T>(this IList<T> list)
+        {
+            if (list.IsNullOrEmpty())
+            {
+                throw new InvalidOperationException("리스트가 비어있습니다.");
+            }
+
+            T firstItem = list[0];
+            list.RemoveAt(0);
+            return firstItem;
+        }
+
+        /// <summary>
         /// <paramref name="list"/>에서 임의의 요소를 꺼냅니다.
         /// </summary>
         /// <typeparam name="T">소스 타입.</typeparam>
@@ -57,7 +102,11 @@ namespace Hian.Extensions
         /// <returns>꺼낸 요소와 해당 인덱스를 포함하는 튜플.</returns>
         public static (T element, int index) PopRandom<T>(this IList<T> list)
         {
+#if UNITY_5_3_OR_NEWER
             int index = UnityEngine.Random.Range(0, list.Count);
+#else
+            int index = _random.Next(0, list.Count);
+#endif
             return (list.Pop(index), index);
         }
 
@@ -77,7 +126,11 @@ namespace Hian.Extensions
         {
             if (clampCount)
             {
+#if UNITY_5_3_OR_NEWER
                 count = Mathf.Clamp(count, 0, list.Count);
+#else
+                count = Math.Max(0, Math.Min(count, list.Count));
+#endif
             }
 
             List<(T element, int index)> popped = new List<(T element, int index)>();
@@ -167,7 +220,11 @@ namespace Hian.Extensions
 
             while (n > 1)
             {
+#if UNITY_5_3_OR_NEWER
                 int index = UnityEngine.Random.Range(0, --n + 1);
+#else
+                int index = _random.Next(0, --n + 1);
+#endif
                 (list[index], list[n]) = (list[n], list[index]);
             }
 
@@ -185,6 +242,38 @@ namespace Hian.Extensions
         public static IList<T> Swap<T>(this IList<T> list, int index1, int index2)
         {
             (list[index1], list[index2]) = (list[index2], list[index1]);
+            return list;
+        }
+
+        /// <summary>
+        /// 리스트가 null이거나 비어있는지 확인합니다.
+        /// </summary>
+        /// <typeparam name="T">요소 타입.</typeparam>
+        /// <param name="list">검사할 리스트.</param>
+        /// <returns>리스트가 null이거나 비어있으면 true, 그렇지 않으면 false.</returns>
+        public static bool IsNullOrEmpty<T>(this IList<T> list)
+        {
+            return list == null || list.Count == 0;
+        }
+
+        /// <summary>
+        /// 리스트의 요소들을 역순으로 배치합니다.
+        /// </summary>
+        /// <typeparam name="T">요소 타입.</typeparam>
+        /// <param name="list">대상 리스트.</param>
+        /// <returns>역순으로 배치된 원본 리스트.</returns>
+        public static IList<T> Reverse<T>(this IList<T> list)
+        {
+            int left = 0;
+            int right = list.Count - 1;
+
+            while (left < right)
+            {
+                (list[left], list[right]) = (list[right], list[left]);
+                left++;
+                right--;
+            }
+
             return list;
         }
     }
