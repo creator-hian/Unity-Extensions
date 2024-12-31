@@ -577,8 +577,8 @@ namespace Hian.Extensions
         /// <returns>편향된 방향 벡터.</returns>
         public static Vector2 RandomDeflected(this Vector2 direction, float angle)
         {
-            return Quaternion.AngleAxis(Random.value * angle.WithRandomSign(), Vector3.forward)
-                * direction;
+            float randomAngle = angle * (Random.value < 0.5f ? -1f : 1f);
+            return Quaternion.AngleAxis(Random.value * randomAngle, Vector3.forward) * direction;
         }
 
         /// <summary>
