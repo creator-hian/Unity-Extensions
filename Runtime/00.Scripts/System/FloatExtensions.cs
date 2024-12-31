@@ -26,18 +26,7 @@ namespace Hian.Extensions
         /// <returns>두 숫자가 거의 같으면 true를 반환하고, 그렇지 않으면 false를 반환합니다.</returns>
         public static bool Approx(this float a, float b)
         {
-            return Mathf.Abs(b - a)
-                < Mathf.Max(0.0000001f * Mathf.Max(Mathf.Abs(a), Mathf.Abs(b)), Mathf.Epsilon * 8);
-        }
-
-        /// <summary>
-        /// 값의 부호(+ 또는 -)를 임의로 변경합니다.
-        /// </summary>
-        /// <param name="value">대상 값.</param>
-        /// <returns>부호가 임의로 변경된 값.</returns>
-        public static float WithRandomSign(this float value)
-        {
-            return value * ((Random.Range(0, 2) * 2) - 1);
+            return Mathf.Approximately(a, b);
         }
     }
 }

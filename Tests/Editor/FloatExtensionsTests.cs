@@ -49,17 +49,4 @@ public class FloatExtensionsTests
         // Assert
         Assert.IsFalse(result);
     }
-
-    [Test]
-    public void WithRandomSign_WhenCalled_ReturnsValueWithRandomSign()
-    {
-        // Arrange
-        float value = 1f;
-
-        // Act
-        float result = value.WithRandomSign();
-
-        // Assert
-        Assert.IsTrue(result is 1f or (-1f));
-    }
 }
