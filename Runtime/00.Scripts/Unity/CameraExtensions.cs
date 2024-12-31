@@ -63,7 +63,7 @@ namespace Hian.Extensions
         /// 카메라의 배경색의 빨간색과 파란색 채널을 설정합니다.
         /// </summary>
         /// <param name="camera">대상 카메라.</param>
-        /// <param name="r">설정할 빨간색 채��� 값.</param>
+        /// <param name="r">설정할 빨간색 채널 값.</param>
         /// <param name="b">설정할 파란색 채널 값.</param>
         public static void SetBackgroundColorRB(this Camera camera, float r, float b)
         {
@@ -223,7 +223,7 @@ namespace Hian.Extensions
         }
 
         /// <summary>
-        /// 카메라의 픽셀 사각형 최대 지점을 설정���니다.
+        /// 카메라의 픽셀 사각형 최대 지점을 설정합니다.
         /// </summary>
         /// <param name="camera">대상 카메라.</param>
         /// <param name="max">설정할 최대 지점 값.</param>
@@ -575,6 +575,51 @@ namespace Hian.Extensions
             screenPosition.y /= multiplier;
 
             return screenPosition;
+        }
+
+        /// <summary>
+        /// 카메라 기준으로 1 월드 유닛당 화면 픽셀 수를 계산합니다.
+        /// </summary>
+        /// <param name="camera">대상 카메라.</param>
+        /// <returns>1 월드 유닛당 픽셀 수.</returns>
+        public static float GetPixelsPerUnit(this Camera camera)
+        {
+            Vector3 p1 = camera.WorldToScreenPoint(Vector3.zero);
+            Vector3 p2 = camera.WorldToScreenPoint(Vector3.right);
+            return Mathf.Abs(p2.x - p1.x);
+        }
+
+        /// <summary>
+        /// 카메라 기준으로 1 픽셀당 월드 유닛 수를 계산합니다.
+        /// </summary>
+        /// <param name="camera">대상 카메라.</param>
+        /// <returns>1 픽셀당 월드 유닛 수.</returns>
+        public static float GetUnitsPerPixel(this Camera camera)
+        {
+            return 1f / camera.GetPixelsPerUnit();
+        }
+
+        /// <summary>
+        /// 카메라의 뷰포트 범위를 여백과 함께 계산합니다.
+        /// 컬링, LOD, 동적 스폰 시스템 등에 활용할 수 있습니다.
+        /// </summary>
+        /// <param name="camera">대상 카메라.</param>
+        /// <param name="viewportMargin">뷰포트 범위에 적용할 여백. 기본값은 (0.2, 0.2)입니다.</param>
+        /// <returns>여백이 적용된 뷰포트 범위를 Vector2로 반환합니다.</returns>
+        public static Vector2 GetViewportExtentsWithMargin(
+            this Camera camera,
+            Vector2? viewportMargin = null
+        )
+        {
+            Vector2 margin = viewportMargin ?? new Vector2(0.2f, 0.2f);
+            Vector2 result;
+
+            float halfFieldOfView = camera.fieldOfView * 0.5f * Mathf.Deg2Rad;
+            result.y = camera.nearClipPlane * Mathf.Tan(halfFieldOfView);
+            result.x = result.y * camera.aspect + margin.x;
+            result.y += margin.y;
+
+            return result;
         }
     }
 }
