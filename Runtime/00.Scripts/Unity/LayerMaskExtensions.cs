@@ -72,5 +72,28 @@ namespace Hian.Extensions
 
             return layerMask;
         }
+
+        /// <summary>
+        /// 레이어 마스크에 지정된 레이어 번호가 포함되어 있는지 확인합니다.
+        /// </summary>
+        /// <param name="mask">확인할 레이어 마스크.</param>
+        /// <param name="layerNumber">확인할 레이어 번호.</param>
+        /// <returns>레이어가 포함되어 있으면 true, 그렇지 않으면 false를 반환합니다.</returns>
+        public static bool Contains(this LayerMask mask, int layerNumber)
+        {
+            return mask == (mask | (1 << layerNumber));
+        }
+
+        /// <summary>
+        /// 레이어 마스크에 지정된 레이어 이름이 포함되어 있는지 확인합니다.
+        /// </summary>
+        /// <param name="mask">확인할 레이어 마스크.</param>
+        /// <param name="layerName">확인할 레이어 이름.</param>
+        /// <returns>레이어가 포함되어 있으면 true, 그렇지 않으면 false를 반환합니다.</returns>
+        public static bool Contains(this LayerMask mask, string layerName)
+        {
+            int layer = LayerMask.NameToLayer(layerName);
+            return Contains(mask, layer);
+        }
     }
 }
