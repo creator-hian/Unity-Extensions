@@ -30,21 +30,15 @@ namespace Hian.Extensions
         /// </summary>
         /// <param name="value">첫 번째 값.</param>
         /// <param name="other">두 번째 값.</param>
-        /// <param name="minDifference">허용 오차 (기본값: 1E-17).</param>
+        /// <param name="epsilon">허용 오차 (기본값: 1E-17).</param>
         /// <returns>두 값이 허용 오차 범위 내에서 근사적으로 같으면 true, 그렇지 않으면 false.</returns>
-        public static bool Approx(this double value, double other, double minDifference = 1E-17)
+        public static bool Approx(this double value, double other, double epsilon = 1E-17)
         {
-            return Math.Abs(value - other) <= minDifference;
-        }
-
-        /// <summary>
-        /// 값의 부호(+ 또는 -)를 임의로 변경합니다.
-        /// </summary>
-        /// <param name="value">대상 값.</param>
-        /// <returns>부호가 임의로 변경된 값.</returns>
-        public static double WithRandomSign(this double value)
-        {
-            return value * ((Random.Range(0, 2) * 2) - 1);
+            return Math.Abs(value - other)
+                <= Math.Max(
+                    epsilon * Math.Max(Math.Abs(value), Math.Abs(other)),
+                    double.Epsilon * 8
+                );
         }
     }
 }

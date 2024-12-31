@@ -49,17 +49,4 @@ public class DoubleExtensionsTests
         // Assert
         Assert.IsFalse(result);
     }
-
-    [Test]
-    public void WithRandomSign_WhenCalled_ReturnsValueWithRandomSign()
-    {
-        // Arrange
-        double value = 1.0;
-
-        // Act
-        double result = value.WithRandomSign();
-
-        // Assert
-        Assert.IsTrue(result is 1.0 or (-1.0));
-    }
 }
