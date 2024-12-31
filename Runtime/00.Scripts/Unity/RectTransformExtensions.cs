@@ -359,5 +359,143 @@ namespace Hian.Extensions
             SetPivotOnlyX(rectTransform, x);
             SetPivotOnlyY(rectTransform, y);
         }
+
+        /// <summary>
+        /// RectTransform의 앵커를 프리셋에 따라 설정합니다.
+        /// </summary>
+        /// <param name="source">대상 RectTransform.</param>
+        /// <param name="align">앵커 프리셋.</param>
+        /// <param name="offset">위치 오프셋.</param>
+        /// <param name="setPivot">피벗도 함께 설정할지 여부.</param>
+        /// <param name="keepSizeDelta">현재 크기를 유지할지 여부.</param>
+        public static void SetAnchor(
+            this RectTransform source,
+            AnchorsPreset align,
+            Vector2 offset = default,
+            bool setPivot = false,
+            bool keepSizeDelta = true
+        )
+        {
+            if (source == null)
+            {
+                Debug.LogWarning($"[SetAnchor] - source is null.");
+                return;
+            }
+
+            var originalSizeDelta = source.sizeDelta;
+            source.anchoredPosition = new Vector3(offset.x, offset.y, 0);
+
+            source.anchorMin = align.GetAnchorMin();
+            source.anchorMax = align.GetAnchorMax();
+
+            if (setPivot)
+            {
+                source.SetPivotOnly(align.GetDefaultPivot());
+            }
+
+            if (keepSizeDelta)
+            {
+                source.sizeDelta = originalSizeDelta;
+            }
+        }
+
+        /// <summary>
+        /// RectTransform의 앵커를 프리셋에 따라 설정합니다.
+        /// </summary>
+        /// <param name="source">대상 RectTransform.</param>
+        /// <param name="align">앵커 프리셋.</param>
+        /// <param name="offsetX">X 위치 오프셋.</param>
+        /// <param name="offsetY">Y 위치 오프셋.</param>
+        /// <param name="setPivot">피벗도 함께 설정할지 여부.</param>
+        /// <param name="keepSizeDelta">현재 크기를 유지할지 여부.</param>
+        public static void SetAnchor(
+            this RectTransform source,
+            AnchorsPreset align,
+            float offsetX = 0,
+            float offsetY = 0,
+            bool setPivot = false,
+            bool keepSizeDelta = true
+        )
+        {
+            SetAnchor(source, align, new Vector2(offsetX, offsetY), setPivot, keepSizeDelta);
+        }
+
+        /// <summary>
+        /// 대상 RectTransform의 중앙으로 이동합니다.
+        /// </summary>
+        /// <param name="objectRectTransform">이동할 RectTransform.</param>
+        /// <param name="targetRectTransform">기준이 될 RectTransform.</param>
+        /// <param name="offset">추가 오프셋.</param>
+        /// <param name="considerScale">스케일을 고려할지 여부.</param>
+        /// <param name="considerRotation">회전을 고려할지 여부.</param>
+        public static void MoveToTargetCenter(
+            this RectTransform objectRectTransform,
+            RectTransform targetRectTransform,
+            Vector2 offset = default,
+            bool considerScale = true,
+            bool considerRotation = true
+        )
+        {
+            if (objectRectTransform == null)
+            {
+                Debug.LogWarning($"[MoveToTargetCenter] - objectRectTransform is null.");
+                return;
+            }
+
+            if (targetRectTransform == null)
+            {
+                Debug.LogWarning($"[MoveToTargetCenter] - targetRectTransform is null.");
+                return;
+            }
+
+            // 타겟의 월드 중심점 계산
+            var targetRect = targetRectTransform.rect;
+            var targetPivot = targetRectTransform.pivot;
+            Vector2 targetAnchorCenter =
+                (targetRectTransform.anchorMin + targetRectTransform.anchorMax) * 0.5f;
+
+            Vector2 targetPivotOffset = new Vector2(
+                (0.5f - targetPivot.x) * targetRect.width,
+                (0.5f - targetPivot.y) * targetRect.height
+            );
+
+            Vector2 targetLocalCenter = new Vector2(
+                targetRect.width * targetAnchorCenter.x + targetPivotOffset.x,
+                targetRect.height * targetAnchorCenter.y + targetPivotOffset.y
+            );
+
+            // 스케일과 회전 고려
+            if (!considerScale)
+            {
+                targetLocalCenter.Scale(targetRectTransform.localScale);
+            }
+
+            Vector3 targetWorldCenterPosition;
+            if (considerRotation)
+            {
+                targetWorldCenterPosition = targetRectTransform.TransformPoint(targetLocalCenter);
+            }
+            else
+            {
+                targetWorldCenterPosition = targetRectTransform.TransformPoint(targetLocalCenter);
+                targetWorldCenterPosition =
+                    Quaternion.Inverse(targetRectTransform.rotation) * targetWorldCenterPosition;
+            }
+
+            // 오브젝트의 피벗 오프셋 계산
+            var objectRect = objectRectTransform.rect;
+            var objectPivot = objectRectTransform.pivot;
+            Vector3 objectPivotOffset = new Vector3(
+                objectRect.width * (0.5f - objectPivot.x),
+                objectRect.height * (0.5f - objectPivot.y),
+                0
+            );
+
+            // 오브젝트 위치 설정
+            objectRectTransform.position =
+                targetWorldCenterPosition
+                - targetRectTransform.TransformVector(objectPivotOffset)
+                + (Vector3)offset;
+        }
     }
 }
