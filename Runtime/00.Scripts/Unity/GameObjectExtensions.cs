@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Hian.Extensions
@@ -26,7 +27,7 @@ namespace Hian.Extensions
         }
 
         /// <summary>
-        /// <paramref name="gameObject"/> 자신 또는 자�� 게임 오브젝트에서 <typeparamref name="T"/> 컴포넌트를 찾습니다.
+        /// <paramref name="gameObject"/> 자신 또는 자식 게임 오브젝트에서 <typeparamref name="T"/> 컴포넌트를 찾습니다.
         /// </summary>
         /// <typeparam name="T">컴포넌트 타입.</typeparam>
         /// <param name="gameObject">대상 게임 오브젝트.</param>
@@ -98,7 +99,7 @@ namespace Hian.Extensions
         /// <summary>
         /// 게임 오브젝트와 모든 자식 게임 오브젝트의 레이어를 설정합니다.
         /// </summary>
-        /// <param name="gameObject">대상 게임 오���젝트.</param>
+        /// <param name="gameObject">대상 게임 오브젝트.</param>
         /// <param name="layer">설정할 레이어.</param>
         public static void SetLayerRecursive(this GameObject gameObject, int layer)
         {
@@ -108,6 +109,28 @@ namespace Hian.Extensions
             {
                 SetLayerRecursive(child.gameObject, layer);
             }
+        }
+
+        /// <summary>
+        /// 이 게임 오브젝트에 대한 Unity 씬 계층 구조의 계층 경로를 반환합니다.
+        /// </summary>
+        /// <param name="gameObject">Hierarchy 경로를 확인하고자 하는 GameObject</param>
+        /// <returns>Scene에서의 해당 GameObject의 Hierarchy 경로를 나타내는 문자열입니다.
+        /// '/'로 구분되는 문자열로 각 부분은 최상위 부모에서 시작하여 지정된 게임오브젝트의 부모 이름으로 끝납니다.</returns>
+        public static string Path(this GameObject gameObject)
+        {
+            return gameObject.transform.Path();
+        }
+
+        /// <summary>
+        /// 해당 GameObject의 Hierarchy 상의 전체 경로를 반환합니다.
+        /// </summary>
+        /// <param name="gameObject">경로를 확인하고자 하는 GameObject</param>
+        /// <returns>Scene에서의 해당 GameObject의 전체 Hierarchy 경로를 나타내는 문자열입니다.
+        /// '/'로 구분되는 문자열로 각 부분은 최상위 부모에서 시작하여 지정된 게임오브젝트의 이름으로 끝납니다.</returns>
+        public static string PathFull(this GameObject gameObject)
+        {
+            return gameObject.transform.PathFull();
         }
     }
 }

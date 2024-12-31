@@ -807,5 +807,35 @@ namespace Hian.Extensions
                 action(transform.GetChild(i));
             }
         }
+
+        /// <summary>
+        /// 이 Transform에 대한 Unity 씬 계층 구조의 계층 경로를 반환합니다.
+        /// </summary>
+        /// <param name="transform">Hierarchy 경로를 확인하고자 하는 Transform</param>
+        /// <returns>Scene에서의 해당 Transform의 Hierarchy 경로를 나타내는 문자열입니다.
+        /// '/'로 구분되는 문자열로 각 부분은 최상위 부모에서 시작하여 지정된 Transform의 부모 이름으로 끝납니다.</returns>
+        public static string Path(this Transform transform)
+        {
+            return "/"
+                + string.Join(
+                    "/",
+                    transform
+                        .GetComponentsInParent<Transform>()
+                        .Select(t => t.name)
+                        .Reverse()
+                        .ToArray()
+                );
+        }
+
+        /// <summary>
+        /// 해당 Transform의 Hierarchy 상의 전체 경로를 반환합니다.
+        /// </summary>
+        /// <param name="transform">경로를 확인하고자 하는 Transform</param>
+        /// <returns>Scene에서의 해당 Transform의 전체 Hierarchy 경로를 나타내는 문자열입니다.
+        /// '/'로 구분되는 문자열로 각 부분은 최상위 부모에서 시작하여 지정된 Transform의 이름으로 끝납니다.</returns>
+        public static string PathFull(this Transform transform)
+        {
+            return transform.Path() + "/" + transform.name;
+        }
     }
 }
